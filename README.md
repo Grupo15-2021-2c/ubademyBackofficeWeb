@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-## SETUP
+## `SETUP`
 1. Install npm
 2. Install node (> 12)
 3. Clone repo
