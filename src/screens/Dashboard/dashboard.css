@@ -1,0 +1,29 @@
+.dashboard-container {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.top-panel {
+    background-color: #708896;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10vh;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.container {
+    background-color: #495055;
+    display: flex;
+}
+
+.others {
+    flex: 4;
+    background-color: rgb(119, 160, 221);
+}

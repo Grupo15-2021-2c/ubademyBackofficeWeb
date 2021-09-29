@@ -1,0 +1,24 @@
+.input-container {
+    width: 30%;
+    height: 8%;
+    align-self: center;
+}
+.regular-style {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    border: none;
+    padding: 0 10px 0 20px;
+    box-sizing: border-box;
+    color: black;
+    font-size: 14px;
+    outline: none;
+    line-height: 3;
+}
+
+.regular-style::placeholder {
+    font-size: 14px;
+    color: grey;
+    opacity: 0.8;
+    align-self: center;
+}

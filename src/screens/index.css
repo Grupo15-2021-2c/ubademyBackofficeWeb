@@ -1,0 +1,75 @@
+.index-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+    width: 40em;
+    height: 50em;
+    margin-top: 5px;
+    position: center;
+    opacity: 0.8;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button {
+    width: 120px;
+    height: 60px;
+    border-radius: 25px;
+    outline: none;
+    background: darkblue;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    padding: 5px 20px;
+}
+
+.link-button {
+    font-size: 14px;
+    height: 60px;
+    background: #282c34;
+    outline: none;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.link-button.active, .link-button:hover{
+    background-color: gray;
+}
+
+.index-list {
+    list-style: none;
+}
+
+.index-list-icons{
+    display: flex;
+    color: rgb(197, 197, 197);
+    border-radius: 10px;
+}
+
+.index-pass {
+    list-style: none;
+    width: 70vh;
+    margin-right: -50vh;
+    padding-bottom: 10px;
+}
+
+.index-pass-icons{
+    display: flex;
+    color: rgb(197, 197, 197);
+}
+
+.index-eye-icon {
+    cursor: pointer;
+    margin-top: 1vh;
+    margin-left: 1vh;
+}
