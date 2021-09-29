@@ -10,6 +10,7 @@ In the project directory, you can run:
 1. Install npm
 2. Install node (> 12)
 3. Clone repo
+4. Run ```npm install```
 
 ### `npm start`
 
