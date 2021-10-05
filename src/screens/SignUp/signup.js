@@ -3,6 +3,7 @@ import { Input, Title, Label } from '../../components';
 import logo from '../../images/ubademylogo.png';
 import '../index.css';
 
+
 const SignUp = () => {
 
     const [name, setName] = useState('');

@@ -1,0 +1,12 @@
+.widgetLg-container {
+    flex: 2;
+    border-radius: 10px;
+    width: 100%;
+    height: 50vh;
+    padding: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
+}

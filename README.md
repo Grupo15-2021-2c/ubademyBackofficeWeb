@@ -6,12 +6,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-## `SETUP`
-1. Install npm
-2. Install node (> 12)
-3. Clone repo
-4. Run ```npm install```
-
 ### `npm start`
 
 Runs the app in the development mode.\

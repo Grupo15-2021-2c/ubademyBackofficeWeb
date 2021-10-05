@@ -3,13 +3,13 @@ import { MailOutline, LockOutlined, Visibility } from '@material-ui/icons';
 import { Input, Title, Label } from '../../components';
 import logo from '../../images/ubademylogo.png';
 import '../index.css';
+import { Link, Grid } from '@material-ui/core';
 
 
 const Login = () => {
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [isPasswordShown, setVisible] = useState();
+    let {account} = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
     function handleChange(name, value){
         if (name === 'email'){
@@ -20,27 +20,22 @@ const Login = () => {
     }
 
     function handleSubmit(){
-        let account = { email, password }
-        window.location='/dashboard'
-        if(account){
-            console.log(account)
+        account = { email, password }
+        if(email && password){
+            console.log(account);
+            window.location='/dashboard';
         }
     }
 
     function togglePasswordVisiblity(){
         var tipo = document.getElementById("password");
-        if(tipo.type == "password"){
+        if(tipo.type === "password"){
             tipo.type = "text";
         }else{
             tipo.type = "password";
         }
     }
     
-    /*function handleIsLoginActive(){
-        let isLoginActive = false;
-        console.log("register")
-    }*/
-
 
     return (
         <div className='index-container'>
@@ -85,10 +80,14 @@ const Login = () => {
                     Login!
                 </button>
             </div>
-            <div className='submit-button-container'>
-                <button className='link-button' onClick={(e) => window.location=`/signup`}>
-                    <Label text='Olvidaste tu contraseña?' />
-                </button>
+            <div>
+            <Grid item>
+                <Link href="/SignUp" >
+                    <div className='link-button'>
+                        {'Olvidaste tu contraseña?'}
+                    </div>
+                </Link>
+            </Grid>
             </div>
         </div>
     );

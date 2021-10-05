@@ -1,0 +1,6 @@
+.admin {
+    flex: 4;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+}

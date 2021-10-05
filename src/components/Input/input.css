@@ -1,7 +1,8 @@
 .input-container {
-    width: 30%;
+    width: 35%;
     height: 8%;
     align-self: center;
+    padding-right: 10px;
 }
 .regular-style {
     width: 100%;

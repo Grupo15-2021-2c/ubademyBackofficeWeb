@@ -1,0 +1,16 @@
+.home {
+    flex: 4;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-features {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.home-widgets {
+    display: flex;
+}

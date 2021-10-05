@@ -1,7 +1,6 @@
 import  { SignUp, Login, Dashboard} from "./screens";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
-
 import image from './images/backgroundImages.png';
 
 function App() {

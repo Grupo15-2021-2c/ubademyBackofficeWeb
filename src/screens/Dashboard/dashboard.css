@@ -8,7 +8,7 @@
 }
 
 .top-panel {
-    background-color: #708896;
+    background-color: #1D3557;
     background-repeat: no-repeat;
     background-size: cover;
     height: 10vh;
@@ -19,11 +19,12 @@
 }
 
 .container {
-    background-color: #495055;
+    background-color: rgb(119, 160, 221);
     display: flex;
+    flex: 4;
 }
 
 .others {
     flex: 4;
-    background-color: rgb(119, 160, 221);
+    background-color: #fafafa;
 }

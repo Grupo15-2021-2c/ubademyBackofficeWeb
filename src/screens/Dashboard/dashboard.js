@@ -1,20 +1,33 @@
 import React from 'react';
-import { Label, Sidebar, Topbar } from '../../components';
-
+import { Sidebar, Topbar } from '../../components';
+import { Home, Admin } from '../../pages';
 import './dashboard.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-function Dashboard() {
+
+
+function Dashboard({account}) {
 
     return (
-      <div className='dashboard-container'>
-        <div className='top-panel'>
-            <Topbar />
+      <Router>
+        <div className='dashboard-container'>
+          <div className='top-panel'>
+            {console.log("cuenta", account)}
+            <Topbar account={account}/>
+          </div>
+          <div className='container' >
+          <Sidebar />        
+          <Switch>
+            <Route exact path="/dashboard/admin">
+              <Admin />
+            </Route>
+            <Route exact path="/dashboard">
+              <Home />
+            </Route>
+          </Switch>         
+          </div>
         </div>
-        <div className='container' >
-          <Sidebar />
-          <div className='others' ></div>
-        </div>
-      </div>
+      </Router> 
     );
   }
   
