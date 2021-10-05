@@ -4,3 +4,47 @@
     display: flex;
     flex-direction: column;
 }
+
+.admin-container {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    margin: 0 auto;
+}
+
+.admin-list {
+    flex: 1;
+    margin: 20px 20px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
+    background-color: #1d3557;
+}
+
+.admin-list-item {
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.admin-input-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.admin-submit-button {
+    border-radius: 25px;
+    height: 5vh;
+    width: 28vh;
+    outline: none;
+    background: #a8dafa;
+    color: #1d3557;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+}

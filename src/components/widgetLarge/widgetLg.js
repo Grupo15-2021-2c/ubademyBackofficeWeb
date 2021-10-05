@@ -1,11 +1,11 @@
 import React from "react";
 import './widgetLg.css';
 
-function WidgetLg() {
+function WidgetLg({ attribute }) {
 
     return (
       <div className='widgetLg-container'>
-            Widget Large
+        Widget Large
       </div>
     );
   }
