@@ -73,10 +73,10 @@ function Admin() {
             </div>
           </li>
           <li className='admin-list-item'>
-                <button className='admin-submit-button'
-                    onClick={(handleSubmit)}>
-                    Añadir!
-                </button>
+              <button className='admin-submit-button'
+                  onClick={(handleSubmit)}>
+                  Añadir!
+              </button>
           </li>
         </ui>
       </div>
