@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Deployments
+ubademyBackofficeWeb is deployed in Heroku 
+* Production [branch main] [Backoffice Web Ubademy (prod)](https://backoffice-web-react.herokuapp.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
