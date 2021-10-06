@@ -85,3 +85,14 @@ function Admin() {
   }
   
   export default Admin;
+
+
+  //endpoint register
+  /*curl --location --request POST 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "firstName": "Caballo",
+    "lastName": "Con Tacos",
+    "email": "caba@ubademy.com",
+    "password": "123456"
+}'*/

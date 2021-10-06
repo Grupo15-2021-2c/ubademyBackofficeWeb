@@ -7,53 +7,83 @@ import axios from 'axios';
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
 
-const columns = [
-    { field: 'id', headerName: 'ID', width: 30 },
-    { field: 'firstName', headerName: 'First name', width: 150 },
-    { field: 'lastName', headerName: 'Last name', width: 150 },
-    { field: 'email', headerName: 'Email', width: 200 },
-    {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.getValue(params.id, 'firstName') || ''} ${
-          params.getValue(params.id, 'lastName') || ''
-        }`,
-    },
-    {
-        field: 'passwordHash',
-        headerName: 'Password Hashed',
-        width: 300,
-      },
-      {
-          field: 'action',
-          headerName: 'Action',
-          width: 150,
-          renderCell: (params) => {
-              return (
-                  <>
-                  <button className='users-edit'>Edit</button>
-                  <DeleteOutline className='users-delete'/>
-                  </>
-              )
-          }
-      }
-  ];
-  
-
 function UserList() {
 
     const [userData, setUserData] = useState('');
     const [userInfos, setUserInfos] = useState([]);
+    const [toggleRefreshList, setToggleRefreshList] = useState(false);
+
+    const handleEdition = (params) => {
+        console.log("EDIT", params.row);
+    
+        const userId = params.row.id
+
+        axios
+            .put(url+ "/" + userId, {...params.row, id: 2, firstName:"torta", lastName:"Manzana"})
+            .then(res => { 
+                console.log(res);
+                setToggleRefreshList(!toggleRefreshList);
+            })
+    };
+    
+    const handleDeletion = (params) => {
+        console.log("DELETE", params.row);
+
+        const userId = params.row.id
+
+        axios
+        .delete(url+ "/" + userId)
+            .then(res => { 
+                console.log(res);
+                setToggleRefreshList(!toggleRefreshList);
+            })
+    };
+    
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 30 },
+        { field: 'firstName', headerName: 'First name', width: 150 },
+        { field: 'lastName', headerName: 'Last name', width: 150 },
+        { field: 'email', headerName: 'Email', width: 200 },
+        {
+          field: 'fullName',
+          headerName: 'Full name',
+          description: 'This column has a value getter and is not sortable.',
+          sortable: false,
+          width: 160,
+          valueGetter: (params) =>
+            `${params.getValue(params.id, 'firstName') || ''} ${
+              params.getValue(params.id, 'lastName') || ''
+            }`,
+        },
+        {
+            field: 'passwordHash',
+            headerName: 'Password Hashed',
+            width: 300,
+        },
+        {
+            field: 'action',
+            headerName: 'Action',
+            width: 150,
+            renderCell: (params) => {
+                return (
+                    <>
+                    <button className='users-edit' onClick={() => handleEdition(params)}>
+                        Edit
+                    </button>
+                    <DeleteOutline className='users-delete' onClick={() => handleDeletion(params)}/>
+                    </>
+                )
+            }
+        }
+      ];
+
 
     const fetchUserList = () => {
         return axios.get(url)
         .then(({data}) => {
             //handle succes
             console.log("response: ",JSON.stringify(data));
+            setToggleRefreshList(!toggleRefreshList);
             return data;
         })
         .catch(err =>{
@@ -67,7 +97,7 @@ function UserList() {
             setUserData(JSON.stringify(userData) || 'No user data found');
             setUserInfos(userData);
         });
-      },[]);
+      },[toggleRefreshList]);
 
     return (
       <div className='users'>
@@ -94,7 +124,4 @@ function UserList() {
   
   export default UserList;
 
-
-  /*                        {userInfos.map((userInfo, idx) => (
-                            <p>{getFullUserName(userInfo)}</p>
-                        ))}                   */
+  //Usar <Modal/> id no se puede cambiar
