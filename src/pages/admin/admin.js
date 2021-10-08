@@ -1,32 +1,63 @@
 import React, { useState } from 'react';
 import './admin.css';
 import { Input, Title, Label } from '../../components';
+import { Visibility } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
 
 function Admin() {
 
   const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   function handleChange(name, value){
-    if (name === 'email'){
-      console.log(value);
-      setEmail(value);
-    } else if(name === 'password'){
-      console.log(value);
-      setPassword(value);
-    }else{
+
+    switch (name) {
+    case 'email':
+      if(value.indexOf("@") < 0){
+        setEmailError(true);
+      }else {
+        setEmail(value);
+        setEmailError(false);
+      }
+      break;
+    case 'password':
+      if (value.length < 6){
+        setPasswordError(true);
+      }else{
+        setPassword(value);
+        setPasswordError(false);
+      }
+      break;
+    case 'name':
       setName(value);
+      break;
+    case 'lastName':
+        setLastName(value);
+        break;
+    default:
+        break;
     }
   }
 
   function handleSubmit(){
-    let account = { name, email, password }
+    let account = { name, lastName, email, password }
     if(account){
         console.log(account)
     }
   }
+
+  function togglePasswordVisiblity(){
+    var tipo = document.getElementById("password");
+    if(tipo.type === "password"){
+        tipo.type = "text";
+    }else{
+        tipo.type = "password";
+    }
+}
 
   return (
     <div className='admin'>
@@ -49,6 +80,18 @@ function Admin() {
             </div>
           </li>
           <li className='admin-list-item'>
+            <Label text='Last Name'/>
+            <div className='admin-input-container'>
+            <Input attribute={{
+                id: 'lastName',
+                name: 'lastName',
+                type: 'text',
+                placeholder: 'Ingrese su Apellido'
+            }}
+            handleChange={handleChange} />
+            </div>
+          </li>
+          <li className='admin-list-item'>
             <Label text='Email' />
             <div className='admin-input-container'>
             <Input attribute={{
@@ -57,22 +100,26 @@ function Admin() {
                 type: 'text',
                 placeholder: 'Ingrese su Email'
             }}
-            handleChange={handleChange} />
+            handleChange={handleChange}
+            param={emailError}
+            />
             </div>
           </li>
           <li className='admin-list-item'>
             <Label text='Password' />
-            <div className='admin-input-container'>
+            <div className='admin-pass'>
             <Input attribute={{
                 id: 'password',
                 name: 'password',
-                type: 'text',
+                type: 'password',
                 placeholder: 'Ingrese su contraseña',
             }}
-            handleChange={handleChange} />
+            handleChange={handleChange}
+            param={passwordError}/>
+            <Visibility className='admin-eye-icon' onClick={togglePasswordVisiblity}/>
             </div>
           </li>
-          <li className='admin-list-item'>
+          <li className='admin-list-item-button'>
               <button className='admin-submit-button'
                   onClick={(handleSubmit)}>
                   Añadir!

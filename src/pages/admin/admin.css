@@ -7,14 +7,14 @@
 
 .admin-container {
     width: 50%;
-    height: 90%;
+    height: 100%;
     display: flex;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .admin-list {
     flex: 1;
-    margin: 20px 20px;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
@@ -36,15 +36,37 @@
     padding: 10px;
 }
 
+.admin-list-item-button {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
 .admin-submit-button {
+    justify-content: center;
     border-radius: 25px;
-    height: 5vh;
-    width: 28vh;
+    height: 45px;
+    width: 35%;
     outline: none;
+    padding: 10px;
     background: #a8dafa;
     color: #1d3557;
     font-size: 14px;
     font-weight: bold;
     transition: all 250ms ease-in-out;
     cursor: pointer;
+}
+
+.admin-pass {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 25px;
+}
+
+.admin-eye-icon {
+    cursor: pointer;
+    color: #EEF1FA;
 }

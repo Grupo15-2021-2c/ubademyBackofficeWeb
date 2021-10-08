@@ -4,6 +4,7 @@ import { Title } from '../../components';
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import axios from 'axios';
+import { Modal } from "@material-ui/core";
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
 
@@ -12,18 +13,21 @@ function UserList() {
     const [userData, setUserData] = useState('');
     const [userInfos, setUserInfos] = useState([]);
     const [toggleRefreshList, setToggleRefreshList] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const handleEdition = (params) => {
         console.log("EDIT", params.row);
-    
         const userId = params.row.id
 
-        axios
+        handleShow();
+        /*axios
             .put(url+ "/" + userId, {...params.row, id: 2, firstName:"torta", lastName:"Manzana"})
             .then(res => { 
                 console.log(res);
                 setToggleRefreshList(!toggleRefreshList);
-            })
+            })*/
     };
     
     const handleDeletion = (params) => {
@@ -99,7 +103,10 @@ function UserList() {
         });
       },[toggleRefreshList]);
 
+      
+      
     return (
+    <>
       <div className='users'>
           <div className='users-container'>
             <ui className='users-list'>
@@ -119,6 +126,7 @@ function UserList() {
             </ui>
           </div>
       </div>
+      </>
     );
   }
   

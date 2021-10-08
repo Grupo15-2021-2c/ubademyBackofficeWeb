@@ -18,13 +18,13 @@ function Dashboard({account}) {
           <div className='container' >
           <Sidebar />        
           <Switch>
-            <Route exact path="/dashboard/admin">
+            <Route exact path="/dashboard/admin" component={Admin}>
               <Admin />
             </Route>
             <Route exact path="/dashboard">
               <Home />
             </Route>
-            <Route exact path="/dashboard/users">
+            <Route exact path="/dashboard/users" component={UserList}>
               <UserList/>
             </Route>
           </Switch>         
