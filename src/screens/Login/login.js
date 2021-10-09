@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MailOutline, LockOutlined, Visibility } from '@material-ui/icons';
 import { Input, Title, Label } from '../../components';
 import logo from '../../images/ubademylogo.png';
-import '../index.css';
+import './login.css';
 import { Link, Grid } from '@material-ui/core';
 import axios from 'axios';
 
@@ -46,6 +46,10 @@ const Login = () => {
         })
             .then(res => { 
                 console.log(res);
+<<<<<<< Updated upstream
+=======
+                localStorage.setItem('access_token', "OK");
+>>>>>>> Stashed changes
                 window.location='/dashboard';
             })
             .catch(error => {
@@ -74,6 +78,8 @@ const Login = () => {
                     <Label text='Usuario' />
                 </li>
             </u1>
+            <u1 className='index-list'>
+                <li className='index-pass-icons'>
             <Input attribute={{
                 id: 'email',
                 name: 'email',
@@ -83,6 +89,11 @@ const Login = () => {
             handleChange={handleChange}
             param={emailError}
             />
+<<<<<<< Updated upstream
+=======
+            </li>
+            </u1>
+>>>>>>> Stashed changes
             <u1 className='index-list'>
                 <li className='index-list-icons'>
                     <LockOutlined/>

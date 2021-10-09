@@ -1,0 +1,18 @@
+.index-pass {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.index-pass-icons{
+    display: flex;
+    color: #EEF1FA;
+    width: 70vh;
+    padding-left: 45vh;
+}
+
+.index-eye-icon {
+    cursor: pointer;
+    margin-top: 1vh;
+}
