@@ -46,10 +46,7 @@ const Login = () => {
         })
             .then(res => { 
                 console.log(res);
-<<<<<<< Updated upstream
-=======
                 localStorage.setItem('access_token', "OK");
->>>>>>> Stashed changes
                 window.location='/dashboard';
             })
             .catch(error => {
@@ -89,11 +86,8 @@ const Login = () => {
             handleChange={handleChange}
             param={emailError}
             />
-<<<<<<< Updated upstream
-=======
             </li>
             </u1>
->>>>>>> Stashed changes
             <u1 className='index-list'>
                 <li className='index-list-icons'>
                     <LockOutlined/>
