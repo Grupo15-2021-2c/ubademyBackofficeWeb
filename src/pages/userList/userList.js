@@ -20,6 +20,24 @@ function UserList() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const handleSave = (firtName, lastName, email, password, id) => {
+        setUser({ 
+            id: id,
+            firstName: firtName,
+            lastName: lastName,
+            email: email,
+            password: password
+        });
+        console.log("user:", user);
+        axios
+            .put(url+ "/" + id, {...user, firstName: `${firtName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`})
+            .then(res => { 
+                console.log("res",res);
+                setToggleRefreshList(!toggleRefreshList);
+                handleClose();
+            });
+    }
+
     const handleEdition = (params) => {
         const userId = params.row.id;
 
@@ -27,16 +45,11 @@ function UserList() {
             id: params.row.id,
             firstName: params.row.firstName,
             lastName: params.row.lastName,
-            email: params.row.email
+            email: params.row.email,
+            password: params.row.password
         });
-        console.log(user);
+        console.log(params.row);
         handleShow();
-        /*axios
-            .put(url+ "/" + userId, {...params.row, id: 2, firstName:"torta", lastName:"Manzana"})
-            .then(res => { 
-                console.log(res);
-                setToggleRefreshList(!toggleRefreshList);
-            })*/
     };
     
     const handleDeletion = (params) => {
@@ -95,7 +108,6 @@ function UserList() {
         return axios.get(url)
         .then(({data}) => {
             //handle succes
-            console.log('res',data);
             setToggleRefreshList(!toggleRefreshList);
             return data.data;
         })
@@ -112,7 +124,6 @@ function UserList() {
         });
       },[toggleRefreshList]);
 
-      
       
     return (
     <>
@@ -133,10 +144,8 @@ function UserList() {
                     </div>
                 </li>
             </ui>
+            <Modal title={user} visibility={show} onClose={handleClose} onSave={handleSave}/>
           </div>
-      </div>
-      <div>
-      <Modal title={user} show={show}/>;
       </div>
       </>
     );

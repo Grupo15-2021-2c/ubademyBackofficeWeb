@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Input, Label } from "../../components";
-import { SettingsPhoneTwoTone, Visibility } from '@material-ui/icons';
+import { Visibility } from '@material-ui/icons';
+import { Box, Fade } from '@material-ui/core';
 import './modal.css';
 
 
-function Modal({title, data, dataKey, show}) {
+function Modal({title, onClose, onSave, visibility}) {
 
-    const [name, setName] = useState('');
+    const [firstName, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
 
-    if(!show){
+    if(!visibility){
         return null;
     }
 
     function handleClose(){
-        show = false;
+        visibility = false;
     }
 
     function handleChange(name, value){
@@ -40,7 +41,7 @@ function Modal({title, data, dataKey, show}) {
             setPasswordError(false);
           }
           break;
-        case 'name':
+        case 'firstName':
           setName(value);
           break;
         case 'lastName':
@@ -61,8 +62,9 @@ function Modal({title, data, dataKey, show}) {
     }
 
     return (
-      <div className='modal-container' onClick={(e) => e.stopPropagation()}>
-        <div className='modal-content' onClick={(e) => e.stopPropagation()}>
+        <Fade in={visibility}>
+        <Box className='modal-container' >
+            <div className='modal-content'>
             <div className='modal-header'>
                 <h4 className='modal-title'>Editing {title.firstName} {title.lastName}</h4>
             </div>
@@ -72,8 +74,8 @@ function Modal({title, data, dataKey, show}) {
                         <Label text='First Name'/>
                         <div className='modal-input-container' >
                         <Input attribute={{
-                            id: 'name',
-                            name: 'name',
+                            id: 'firstName',
+                            name: 'firstName',
                             type: 'text',
                             placeholder: title.firstName,
                         }}
@@ -124,12 +126,18 @@ function Modal({title, data, dataKey, show}) {
                 </u1>                    
             </div>
             <div className='modal-footer'>
-                <button onClick={() => handleClose} className='modal-button'>
-                    Close
+                <button onClick={() => onClose()} 
+                data-disabled='modal' className='modal-button'>
+                    Cancelar
+                </button>
+                <button onClick={() => onSave(firstName, lastName, email, password, title.id)} 
+                data-disabled='modal' className='modal-button'>
+                    Guardar
                 </button>
             </div>
-        </div>
-      </div>
+            </div>
+        </Box>
+        </Fade>
     );
   }
   

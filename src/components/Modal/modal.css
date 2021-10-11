@@ -9,7 +9,6 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease-in-out;
-    pointer-events:  none;
 }
 
 
@@ -71,7 +70,8 @@
 }
 
 .modal-footer{
-
+    display: flex;
+    justify-content: space-between;
 }
 
 .modal-button {
