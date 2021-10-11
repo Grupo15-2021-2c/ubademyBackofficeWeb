@@ -13,7 +13,7 @@ function UserList() {
 
 
     const [user, setUser] = useState({});
-    const [userData, setUserData] = useState();
+    //const [userData, setUserData] = useState();
     const [userInfos, setUserInfos] = useState([]);
     const [toggleRefreshList, setToggleRefreshList] = useState(false);
     const [show, setShow] = useState(false);
@@ -39,8 +39,6 @@ function UserList() {
     }
 
     const handleEdition = (params) => {
-        const userId = params.row.id;
-
         setUser({ 
             id: params.row.id,
             firstName: params.row.firstName,
@@ -119,7 +117,7 @@ function UserList() {
 
     useEffect(() => {
         fetchUserList().then((userData) => {
-            setUserData(JSON.stringify(userData) || 'No user data found');
+            //setUserData(JSON.stringify(userData) || 'No user data found');
             setUserInfos(userData);
         });
       },[toggleRefreshList]);

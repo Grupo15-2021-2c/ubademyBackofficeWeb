@@ -8,5 +8,6 @@ import Chart from './Chart/chart';
 import WidgetSm from './widgetSmall/widgetSm';
 import WidgetLg from './widgetLarge/widgetLg';
 import Modal from './Modal/modal';
+import { passwordRegex, validateEmail } from './Regex/regex';
 
-export { Input, Title, Label, Topbar, Sidebar, Feature, Chart, WidgetSm, WidgetLg, Modal }
+export { Input, Title, Label, Topbar, Sidebar, Feature, Chart, WidgetSm, WidgetLg, Modal, passwordRegex, validateEmail }

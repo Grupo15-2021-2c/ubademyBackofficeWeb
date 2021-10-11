@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { MailOutline, LockOutlined, Visibility } from '@material-ui/icons';
-import { Input, Title, Label } from '../../components';
+import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
 import logo from '../../images/ubademylogo.png';
 import './login.css';
 import { Link, Grid } from '@material-ui/core';
-import axios from 'axios';
+import axios from 'axios'; 
 
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users/login';
@@ -18,14 +18,14 @@ const Login = () => {
 
     function handleChange(name, value){
         if (name === 'email'){
-            if(value.indexOf("@") < 0){
+            if (!validateEmail(value)){
                 setEmailError(true);
             }else{
                 setEmail(value);
                 setEmailError(false);
             }
         } else {
-            if (value.length < 6){
+            if (!RegExp(passwordRegex).test(value)){
                 setPasswordError(true);
             }else{
                 setPassword(value);

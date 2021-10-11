@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Input, Label } from "../../components";
 import { Visibility } from '@material-ui/icons';
 import { Box, Fade } from '@material-ui/core';
@@ -16,10 +16,6 @@ function Modal({title, onClose, onSave, visibility}) {
 
     if(!visibility){
         return null;
-    }
-
-    function handleClose(){
-        visibility = false;
     }
 
     function handleChange(name, value){
@@ -106,6 +102,7 @@ function Modal({title, onClose, onSave, visibility}) {
                             placeholder: title.email
                         }}
                         handleChange={handleChange}
+                        param={emailError}
                         />
                         </div>
                     </li>
@@ -119,6 +116,7 @@ function Modal({title, onClose, onSave, visibility}) {
                             placeholder: 'Ingrese su nueva Contraseña'
                         }}
                         handleChange={handleChange}
+                        param={passwordError}
                         />
                         <Visibility className='modal-eye-icon' onClick={togglePasswordVisiblity}/>
                         </div>
