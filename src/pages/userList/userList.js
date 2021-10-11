@@ -1,33 +1,55 @@
 import React, { useEffect, useState } from "react";
 import './userList.css';
-import { Title } from '../../components';
+import { Title, Modal } from '../../components';
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import axios from 'axios';
-import { Modal } from "@material-ui/core";
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
 
+
+
 function UserList() {
 
-    const [userData, setUserData] = useState('');
+
+    const [user, setUser] = useState({});
+    const [userData, setUserData] = useState();
     const [userInfos, setUserInfos] = useState([]);
     const [toggleRefreshList, setToggleRefreshList] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleEdition = (params) => {
-        console.log("EDIT", params.row);
-        const userId = params.row.id
-
-        handleShow();
-        /*axios
-            .put(url+ "/" + userId, {...params.row, id: 2, firstName:"torta", lastName:"Manzana"})
+    const handleSave = (firtName, lastName, email, password, id) => {
+        setUser({ 
+            id: id,
+            firstName: firtName,
+            lastName: lastName,
+            email: email,
+            password: password
+        });
+        console.log("user:", user);
+        axios
+            .put(url+ "/" + id, {...user, firstName: `${firtName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`})
             .then(res => { 
-                console.log(res);
+                console.log("res",res);
                 setToggleRefreshList(!toggleRefreshList);
-            })*/
+                handleClose();
+            });
+    }
+
+    const handleEdition = (params) => {
+        const userId = params.row.id;
+
+        setUser({ 
+            id: params.row.id,
+            firstName: params.row.firstName,
+            lastName: params.row.lastName,
+            email: params.row.email,
+            password: params.row.password
+        });
+        console.log(params.row);
+        handleShow();
     };
     
     const handleDeletion = (params) => {
@@ -86,9 +108,8 @@ function UserList() {
         return axios.get(url)
         .then(({data}) => {
             //handle succes
-            console.log("response: ",JSON.stringify(data));
             setToggleRefreshList(!toggleRefreshList);
-            return data;
+            return data.data;
         })
         .catch(err =>{
             //handle error
@@ -104,7 +125,7 @@ function UserList() {
       },[toggleRefreshList]);
 
       
-      
+
     return (
     <>
       <div className='users'>
@@ -124,6 +145,7 @@ function UserList() {
                     </div>
                 </li>
             </ui>
+            <Modal title={user} visibility={show} onClose={handleClose} onSave={handleSave}/>
           </div>
       </div>
       </>
@@ -132,4 +154,3 @@ function UserList() {
   
   export default UserList;
 
-  //Usar <Modal/> id no se puede cambiar

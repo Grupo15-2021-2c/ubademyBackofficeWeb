@@ -1,6 +1,6 @@
 import React from "react";
 import './sidebar.css';
-import { LineStyle, Timeline, TrendingUp, VerifiedUserOutlined, PeopleAltOutlined } from '@material-ui/icons';
+import { LineStyle, Timeline, TrendingUp, SupervisorAccountOutlined, PeopleAltOutlined } from '@material-ui/icons';
 import { ListItem } from '@material-ui/core';
 import { NavLink } from "react-router-dom";
 
