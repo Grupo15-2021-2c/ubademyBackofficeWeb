@@ -39,7 +39,7 @@ function Sidebar() {
                         <li className='sidebar-list-item'>
                             <NavLink to="/dashboard/admin" className='sidebar-list-item' activeClassName='active'>
                                 <ListItem button>
-                                    <VerifiedUserOutlined className='sidebar-icon'/>
+                                    <SupervisorAccountOutlined className='sidebar-icon'/>
                                     Administradores
                                 </ListItem>
                             </NavLink>
