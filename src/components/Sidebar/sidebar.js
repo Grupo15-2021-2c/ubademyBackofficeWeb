@@ -1,6 +1,6 @@
 import React from "react";
 import './sidebar.css';
-import { LineStyle, Timeline, TrendingUp, SupervisorAccountOutlined } from '@material-ui/icons';
+import { LineStyle, Timeline, TrendingUp, SupervisorAccountOutlined, PeopleAltOutlined } from '@material-ui/icons';
 import { ListItem } from '@material-ui/core';
 import { NavLink } from "react-router-dom";
 
@@ -19,11 +19,13 @@ function Sidebar() {
                                 </ListItem>
                             </NavLink>
                         </li>
-                        <li className='sidebar-list-item'>
-                            <ListItem button>
-                                <Timeline className='sidebar-icon'/>
-                                Análisis
-                            </ListItem>
+                        <li>
+                        <NavLink exact to="/dashboard/users" className='sidebar-list-item' activeClassName='active'>
+                                <ListItem button>
+                                    <PeopleAltOutlined className='sidebar-icon'/>
+                                    Usuarios
+                                </ListItem>
+                            </NavLink>
                         </li>
                         <li className='sidebar-list-item'>
                             <ListItem button>
