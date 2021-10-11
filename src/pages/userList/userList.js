@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from "react";
 import './userList.css';
-import { Title, Modal } from '../../components';
+import { Title } from '../../components';
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import axios from 'axios';
+import { Modal } from "@material-ui/core";
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
 
-
-
 function UserList() {
 
-    let User = {
-        id: '',
-        firstName: '',
-        lastName: '',
-        email: ''
-    };
-
-    const [user, setUser] = useState({});
-    const [userData, setUserData] = useState();
+    const [userData, setUserData] = useState('');
     const [userInfos, setUserInfos] = useState([]);
     const [toggleRefreshList, setToggleRefreshList] = useState(false);
     const [show, setShow] = useState(false);
@@ -27,15 +18,9 @@ function UserList() {
     const handleShow = () => setShow(true);
 
     const handleEdition = (params) => {
-        const userId = params.row.id;
+        console.log("EDIT", params.row);
+        const userId = params.row.id
 
-        setUser({ 
-            id: params.row.id,
-            firstName: params.row.firstName,
-            lastName: params.row.lastName,
-            email: params.row.email
-        });
-        console.log(user);
         handleShow();
         /*axios
             .put(url+ "/" + userId, {...params.row, id: 2, firstName:"torta", lastName:"Manzana"})
@@ -101,6 +86,7 @@ function UserList() {
         return axios.get(url)
         .then(({data}) => {
             //handle succes
+            console.log("response: ",JSON.stringify(data));
             setToggleRefreshList(!toggleRefreshList);
             return data;
         })
@@ -139,9 +125,6 @@ function UserList() {
                 </li>
             </ui>
           </div>
-      </div>
-      <div>
-      <Modal title={user} show={show}/>;
       </div>
       </>
     );

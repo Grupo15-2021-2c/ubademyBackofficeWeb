@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Title, Label } from '../../components';
 import logo from '../../images/ubademylogo.png';
-import '../index.css';
+import './singup.css';
 
 
 const SignUp = () => {
