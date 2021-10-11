@@ -2,7 +2,6 @@ import React from "react";
 import './topbar.css';
 import { NotificationsNone, Language, Settings } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
-import image from '../../images/avatar.png';
 import { Link, Avatar } from '@material-ui/core';
 
 function Topbar( { account }) {
