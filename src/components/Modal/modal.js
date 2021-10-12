@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Label } from "../../components";
+import { Input, Label, passwordRegex, validateEmail } from "../../components";
 import { Visibility } from '@material-ui/icons';
 import { Box, Fade } from '@material-ui/core';
 import './modal.css';
@@ -22,16 +22,16 @@ function Modal({title, onClose, onSave, visibility}) {
 
         switch (name) {
         case 'email':
-          if(value.indexOf("@") < 0){
-            setEmailError(true);
-          }else {
-            setEmail(value);
-            setEmailError(false);
-          }
+            if (!validateEmail(value)){
+                setEmailError(true);
+            }else {
+                setEmail(value);
+                setEmailError(false);
+            }
           break;
         case 'password':
-          if (value.length < 6){
-            setPasswordError(true);
+            if (!RegExp(passwordRegex).test(value)){
+                setPasswordError(true);
           }else{
             setPassword(value);
             setPasswordError(false);

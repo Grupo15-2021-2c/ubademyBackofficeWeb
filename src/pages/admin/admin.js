@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './admin.css';
-import { Input, Title, Label } from '../../components';
+import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
 import { Visibility } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
 
@@ -17,7 +17,7 @@ function Admin() {
 
     switch (name) {
     case 'email':
-      if(value.indexOf("@") < 0){
+      if (!validateEmail(value)){
         setEmailError(true);
       }else {
         setEmail(value);
@@ -25,7 +25,7 @@ function Admin() {
       }
       break;
     case 'password':
-      if (value.length < 6){
+      if (!RegExp(passwordRegex).test(value)){
         setPasswordError(true);
       }else{
         setPassword(value);
