@@ -47,10 +47,19 @@
     margin: 20px 0px;
 }
 
+.modal-visualizing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #EEF1FA;
+    font-size: 18px;
+}
+
 .modal-input-container {
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
     align-items: center;
     width: 100%;
 }
@@ -76,6 +85,20 @@
 
 .modal-button {
     justify-content: center;
+    border-radius: 25px;
+    height: 45px;
+    width: 35%;
+    outline: none;
+    padding: 10px;
+    background: #1d3557;
+    color: #a8dafa;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+}
+
+.modal-button-exit {
     border-radius: 25px;
     height: 45px;
     width: 35%;

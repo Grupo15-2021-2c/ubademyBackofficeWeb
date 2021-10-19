@@ -35,24 +35,32 @@ const Login = () => {
     }
 
     function handleSubmit(){
-        const payload = {
-            "email": `${email}`,
-            "password": `${password}`
-        };
-        axios({
-            method: 'post',
-            url: `${url}`,
-            data: payload
-        })
-            .then(res => { 
-                console.log(res);
-                localStorage.setItem('access_token', "OK");
-                window.location='/dashboard';
+        if(!emailError && !passwordError){
+            const payload = {
+                "email": `${email}`,
+                "password": `${password}`
+            };
+            axios({
+                method: 'post',
+                url: `${url}`,
+                data: payload
             })
-            .catch(error => {
-                console.error('There was an error!', error);
-                alert("Usuario o contraseña inválidas");
-            });    
+                .then(res => { 
+                    console.log(res);
+                    localStorage.setItem('access_token', "OK");
+                    window.location='/dashboard';
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('Invalid login info');
+                });
+            }else{
+                if(emailError){
+                    alert("Usuario inválido");
+                }else{
+                    alert("Contraseña inválidas");
+                }
+            }   
     }
 
     function togglePasswordVisiblity(){

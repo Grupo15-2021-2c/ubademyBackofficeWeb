@@ -37,3 +37,9 @@
     color: #E63946;
     cursor: pointer;
 }
+
+.users-visualize {
+    color: #1D3557;
+    cursor: pointer;
+    margin-left: 20px;
+}
