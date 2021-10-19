@@ -277,6 +277,12 @@ function UserList() {
                 <div className='modal-body'>
                     <u1 className='modal-list'>
                         <li className='modal-list-item'>
+                            <Label text='User id'/>
+                            <div className='modal-visualizing-container' >
+                                {user.id}
+                            </div>
+                        </li>
+                        <li className='modal-list-item'>
                             <Label text='First Name'/>
                             <div className='modal-visualizing-container' >
                                 {user.firstName}
