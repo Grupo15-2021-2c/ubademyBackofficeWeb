@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './admin.css';
 import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
-import { Visibility } from '@material-ui/icons';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
 
 function Admin() {
@@ -12,6 +12,7 @@ function Admin() {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   function handleChange(name, value){
 
@@ -54,8 +55,10 @@ function Admin() {
     var tipo = document.getElementById("password");
     if(tipo.type === "password"){
         tipo.type = "text";
+        setVisible(true);
     }else{
         tipo.type = "password";
+        setVisible(false);
     }
 }
 
@@ -116,7 +119,7 @@ function Admin() {
             }}
             handleChange={handleChange}
             param={passwordError}/>
-            <Visibility className='admin-eye-icon' onClick={togglePasswordVisiblity}/>
+            {visible ? <Visibility className='admin-eye-icon' onClick={togglePasswordVisiblity}/> : <VisibilityOff className='admin-eye-icon' onClick={togglePasswordVisiblity}/>}
             </div>
           </li>
           <li className='admin-list-item-button'>

@@ -1,84 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './widgetSm.css';
 import jovenConfiado from '../../images/joven-confiado.jpg';
-import hombreRastas from '../../images/hombre-rastas.jpg';
-import mujerJoven from '../../images/mujer-joven.jpg';
-import { Visibility } from "@material-ui/icons";
+import axios from 'axios';
+
+//esta url va a pegarle a los admins o 
+//filtrar por "role"
+const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
+
+function WidgetSm({ data }) {
+  const [userInfos, setUserInfos] = useState([]);
+  const [toggleRefreshList, setToggleRefreshList] = useState(false);
 
 
-function WidgetSm() {
+  const fetchUserList = () => {
+    return axios.get(url)
+    .then(({data}) => {
+        //handle succes
+        setToggleRefreshList(toggleRefreshList);
+        return data.data;
+    })
+    .catch(err =>{
+        //handle error
+        console.error("error",err);
+    })
+  }
+
+  useEffect(() => {
+    fetchUserList().then((userData) => {
+        //setUserData(JSON.stringify(userData) || 'No user data found');
+        console.log(userData)
+        setUserInfos(userData);
+    });
+  },[toggleRefreshList]);
 
     return (
       <div className='widgetSm-container'>
-        <span className='widgetSm-title'>New Join Members</span>
-        <ui className='widgetSm-list' >
-          <li className='widgetSm-list-item'>
-            <img src={jovenConfiado} alt='' className='widgetSm-image'/>
-            <div className='widgetSm-user'>
-              <span className='widgetSm-username'>Daniel Kumar</span>
-              <span className='widgetSm-user-title'>Protesista Dental</span>
-            </div>
-            <button className='widgetSm-button'>
-              <Visibility className='widgetSm-icon'/>
-              Display
-            </button>
-          </li>
-          <li className='widgetSm-list-item'>
-            <img src={hombreRastas} alt='' className='widgetSm-image'/>
-            <div className='widgetSm-user'>
-              <span className='widgetSm-username'>Bob Marley </span>
-              <span className='widgetSm-user-title'>Licenciado en Música </span>
-            </div>
-            <button className='widgetSm-button'>
-            <Visibility className='widgetSm-icon'/>
-              Display
-            </button>
-            </li>
-            <li className='widgetSm-list-item'>
-            <img src={mujerJoven} alt='' className='widgetSm-image'/>
-            <div className='widgetSm-user'>
-              <span className='widgetSm-username'>Ana Miller </span>
-              <span className='widgetSm-user-title'>Psicóloga Escolar </span>
-            </div>
-            <button className='widgetSm-button'>
-            <Visibility className='widgetSm-icon'/>
-              Display
-            </button>
-          </li>
-          <li className='widgetSm-list-item'>
-            <img src={jovenConfiado} alt='' className='widgetSm-image'/>
-            <div className='widgetSm-user'>
-              <span className='widgetSm-username'>Daniel Kumar</span>
-              <span className='widgetSm-user-title'>Protesista Dental</span>
-            </div>
-            <button className='widgetSm-button'>
-              <Visibility className='widgetSm-icon'/>
-              Display
-            </button>
-          </li>
-          <li className='widgetSm-list-item'>
-            <img src={hombreRastas} alt='' className='widgetSm-image'/>
-            <div className='widgetSm-user'>
-              <span className='widgetSm-username'>Bob Marley </span>
-              <span className='widgetSm-user-title'>Licenciado en Música </span>
-            </div>
-            <button className='widgetSm-button'>
-              <Visibility className='widgetSm-icon'/>
-              Display
-            </button>
-            </li>
-            <li className='widgetSm-list-item'>
-            <img src={mujerJoven} alt='' className='widgetSm-image'/>
-            <div className='widgetSm-user'>
-              <span className='widgetSm-username'>Ana Miller </span>
-              <span className='widgetSm-user-title'>Psicóloga Escolar </span>
-            </div>
-            <button className='widgetSm-button'>
-              <Visibility className='widgetSm-icon'/>
-              Display
-            </button>
-          </li>
-        </ui>
+        <span className='widgetSm-title'>Admin Members</span>
+        <table className='widgetSm-table' >
+          <tr className='widgetSm-tr'>
+              <th className='widgetSm-th' >Pic </th>
+              <th className='widgetSm-th' >Name </th>
+              <th className='widgetSm-th' >Email </th>
+            </tr>
+            {userInfos.map((user) => (
+                    <>
+                    {user.role === 'ADMIN' &&
+                    <tr className='widgetSm-user'>
+                      <td>
+                        <img src={jovenConfiado} alt='' className='widgetSm-image'/>   
+                      </td>
+                      <td>
+                        <span>{user.firstName + ' ' + user.lastName}</span>
+                      </td>
+                      <td>                        
+                        <span>{user.email}</span>
+                      </td>                     
+                    </tr>
+                    }
+                    </>
+                ))}
+        </table>
       </div>
     );
   }

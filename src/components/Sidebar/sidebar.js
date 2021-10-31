@@ -20,7 +20,7 @@ function Sidebar() {
                             </NavLink>
                         </li>
                         <li>
-                        <NavLink exact to="/dashboard/users" className='sidebar-list-item' activeClassName='active'>
+                            <NavLink exact to="/dashboard/users" className='sidebar-list-item' activeClassName='active'>
                                 <ListItem button>
                                     <PeopleAltOutlined className='sidebar-icon'/>
                                     Usuarios
@@ -28,10 +28,12 @@ function Sidebar() {
                             </NavLink>
                         </li>
                         <li className='sidebar-list-item'>
-                            <ListItem button>
-                                <TrendingUp className='sidebar-icon'/>
-                                Cursos
-                            </ListItem>
+                            <NavLink exact to="/dashboard/courses" className='sidebar-list-item' activeClassName='active'>
+                                <ListItem button>
+                                    <TrendingUp className='sidebar-icon'/>
+                                    Cursos
+                                </ListItem>
+                            </NavLink>
                         </li>
                     </u1>
                     <h3 className='sidebar-title'>Quick Menu</h3>

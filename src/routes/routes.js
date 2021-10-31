@@ -18,6 +18,7 @@ function Routes({ component: Component, ...rest}) {
                     <PrivateRoute exact path='/dashboard' component={Dashboard}/>
                     <PrivateRoute exact path='/dashboard/users' component={Dashboard}/>
                     <PrivateRoute exact path='/dashboard/admin' component={Dashboard}/>
+                    <PrivateRoute exact path='/dashboard/courses' component={Dashboard}/>
                 </Router>
             </div>
         </div>

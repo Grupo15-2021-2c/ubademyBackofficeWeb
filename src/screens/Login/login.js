@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MailOutline, LockOutlined, Visibility } from '@material-ui/icons';
+import { MailOutline, LockOutlined, Visibility, VisibilityOff } from '@material-ui/icons';
 import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
 import logo from '../../images/ubademylogo.png';
 import './login.css';
@@ -15,6 +15,7 @@ const Login = () => {
     const [password, setPassword] = useState();
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
+    const [visible, setVisible] = useState(true);
 
     function handleChange(name, value){
         if (name === 'email'){
@@ -67,8 +68,10 @@ const Login = () => {
         var tipo = document.getElementById("password");
         if(tipo.type === "password"){
             tipo.type = "text";
+            setVisible(true);
         }else{
             tipo.type = "password";
+            setVisible(false);
         }
     }
 
@@ -114,7 +117,7 @@ const Login = () => {
                     param={passwordError}
                     >
                     </Input>
-                    <Visibility className='index-eye-icon' onClick={togglePasswordVisiblity}/>
+                    {visible ? <Visibility className='admin-eye-icon' onClick={togglePasswordVisiblity}/> : <VisibilityOff className='admin-eye-icon' onClick={togglePasswordVisiblity}/>}
                 </li>
             </u1>
             <div className='submit-button-container'>

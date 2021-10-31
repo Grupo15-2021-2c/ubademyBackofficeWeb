@@ -20,15 +20,21 @@
 
 .submit-button {
     border-radius: 25px;
-    height: 8vh;
+    height: 6vh;
     width: 25vh;
     outline: none;
-    background: #a8dafa;
-    color: #1d3557;
+    background: #1d3557;
+    color: #a8dafa;
     font-size: 14px;
     font-weight: bold;
-    transition: all 250ms ease-in-out;
+    transition: ease-out 0.3s;
     cursor: pointer;
+}
+
+.submit-button:hover {
+    box-shadow: inset 25vh 0 0 0 #a8dafa;
+    cursor: pointer;
+    color: #1d3557;
 }
 
 .link-button {

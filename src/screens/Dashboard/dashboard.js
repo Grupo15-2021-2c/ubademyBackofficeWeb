@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sidebar, Topbar } from '../../components';
-import { Home, Admin, UserList } from '../../pages';
+import { Home, Admin, UserList, CoursesList } from '../../pages';
 import './dashboard.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -26,6 +26,9 @@ function Dashboard({account}) {
             </Route>
             <Route exact path="/dashboard/users" component={UserList}>
               <UserList/>
+            </Route>
+            <Route exact path="/dashboard/courses" component={CoursesList}>
+              <CoursesList/>
             </Route>
           </Switch>         
           </div>
