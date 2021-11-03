@@ -2,7 +2,7 @@
     border-radius: 5%;
     width: 100px;
     position: absolute;
-    top: 40px;
+    top: 20px;
     list-style: none;
     text-align: start;
     background: #EEF1FA;
@@ -15,5 +15,5 @@
 }
 
 .dropdownmenu-container li:hover {
-    background: #aebeee;
+    background: #EEF1FA;
 }

@@ -3,8 +3,6 @@ import './widgetSm.css';
 import jovenConfiado from '../../images/joven-confiado.jpg';
 import axios from 'axios';
 
-//esta url va a pegarle a los admins o 
-//filtrar por "role"
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
 
 function WidgetSm({ data }) {
@@ -41,6 +39,7 @@ function WidgetSm({ data }) {
               <th className='widgetSm-th' >Pic </th>
               <th className='widgetSm-th' >Name </th>
               <th className='widgetSm-th' >Email </th>
+              <th className='widgetSm-th' >Status </th>
             </tr>
             {userInfos.map((user) => (
                     <>
@@ -54,7 +53,17 @@ function WidgetSm({ data }) {
                       </td>
                       <td>                        
                         <span>{user.email}</span>
-                      </td>                     
+                      </td>
+                      <td>
+                        {!user.blocked ? 
+                        <button className={'widgetSm-button Approved'}>
+                          Active
+                        </button> : 
+                        <button className={'widgetSm-button Declined'}>
+                          Blocked
+                        </button>
+                        }
+                      </td>                
                     </tr>
                     }
                     </>

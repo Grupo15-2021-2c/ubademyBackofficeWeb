@@ -6,7 +6,9 @@ import './dropDownMenu.css';
 const DropDownMenu = ({children}) =>{
     return (
         <div className='dropdownmenu-container'>
-            {children}
+            <li className='dropdownmenu-container li'>
+                {children}
+            </li> 
         </div>
     )
 };

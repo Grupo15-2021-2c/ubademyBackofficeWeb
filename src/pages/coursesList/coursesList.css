@@ -6,7 +6,7 @@
 }
 
 .courses-container {
-    width: 50%;
+    width: 90%;
     height: 100%;
     display: flex;
     margin: 0 auto;
@@ -20,5 +20,5 @@
     box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     -webkit-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
-    background-color: #1d3557;
+    background-color: #EEF1FA;
 }

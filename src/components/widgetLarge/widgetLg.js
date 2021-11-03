@@ -57,9 +57,14 @@ function WidgetLg({ attribute }) {
                       <span>{user.email}</span>
                   </td>
                   <td>
+                    {!user.blocked ? 
                     <button className={'widgetLg-button Approved'}>
-                      Approved
+                      Active
+                    </button> : 
+                    <button className={'widgetLg-button Declined'}>
+                      Blocked
                     </button>
+                    }
                   </td>
                 </tr>
                 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './userList.css';
 import { Title, Modal, Label, Input, passwordRegex, validateEmail } from '../../components';
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline, Visibility, BlockOutlined } from "@material-ui/icons";
+import { Visibility, BlockOutlined } from "@material-ui/icons";
 import axios from 'axios';
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
