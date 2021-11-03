@@ -1,0 +1,19 @@
+.dropdownmenu-container {
+    border-radius: 5%;
+    width: 100px;
+    position: absolute;
+    top: 40px;
+    list-style: none;
+    text-align: start;
+    background: #EEF1FA;
+    margin-right: 10vh;
+}
+
+.dropdownmenu-container li {
+    background: #EEF1FA;
+    cursor: pointer;
+}
+
+.dropdownmenu-container li:hover {
+    background: #aebeee;
+}

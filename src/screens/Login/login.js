@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { MailOutline, LockOutlined, Visibility, VisibilityOff } from '@material-ui/icons';
 import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
+import { Dashboard } from '../index';
 import logo from '../../images/ubademylogo.png';
 import './login.css';
 import { Link, Grid } from '@material-ui/core';
 import axios from 'axios'; 
 
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users/login';
+const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users/admins/login';
 
 const Login = () => {
     //const [account, setAccount] = useState();
@@ -15,7 +16,7 @@ const Login = () => {
     const [password, setPassword] = useState();
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     function handleChange(name, value){
         if (name === 'email'){
@@ -47,8 +48,9 @@ const Login = () => {
                 data: payload
             })
                 .then(res => { 
-                    console.log(res);
-                    localStorage.setItem('access_token', "OK");
+                    console.log(res.data);
+                    localStorage.setItem('access_token', res.statusText);
+                    //<Dashboard account={res.data}/>
                     window.location='/dashboard';
                 })
                 .catch(error => {
@@ -105,8 +107,8 @@ const Login = () => {
                     <Label text='Contraseña' />
                 </li>
             </u1>
-            <u1 className='index-pass'>
-                <li className='index-pass-icons'>
+            <u1 className='index-list'>
+                <li className='index-pass'>
                     <Input attribute={{
                         id: 'password',
                         name: 'password',

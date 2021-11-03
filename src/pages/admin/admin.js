@@ -3,10 +3,14 @@ import './admin.css';
 import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
+import axios from 'axios';
+
+const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users/admins/register';
+
 
 function Admin() {
 
-  const [name, setName] = useState('');
+  const [firstName, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,9 +18,9 @@ function Admin() {
   const [emailError, setEmailError] = useState(false);
   const [visible, setVisible] = useState(true);
 
-  function handleChange(name, value){
+  function handleChange(firstName, value){
 
-    switch (name) {
+    switch (firstName) {
     case 'email':
       if (!validateEmail(value)){
         setEmailError(true);
@@ -33,7 +37,7 @@ function Admin() {
         setPasswordError(false);
       }
       break;
-    case 'name':
+    case 'firstName':
       setName(value);
       break;
     case 'lastName':
@@ -45,10 +49,34 @@ function Admin() {
   }
 
   function handleSubmit(){
-    let account = { name, lastName, email, password }
-    if(account){
-        console.log(account)
-    }
+    if(!emailError && !passwordError){
+      const payload = {
+          "firstName": `${firstName}`,
+          "lastName": `${lastName}`,
+          "email": `${email}`,
+          "password": `${password}`
+      };
+      axios({
+          method: 'post',
+          url: `${url}`,
+          data: payload
+      })
+          .then(res => { 
+              console.log(res.statusText);
+              alert(res.statusText);
+              window.location.reload(false);
+          })
+          .catch(error => {
+              console.log(error);
+              alert(error);
+          });
+      }else{
+          if(emailError){
+              alert("Usuario inválido");
+          }else{
+              alert("Contraseña inválidas");
+          }
+      }
   }
 
   function togglePasswordVisiblity(){
@@ -74,8 +102,8 @@ function Admin() {
             <Label text='Name'/>
             <div className='admin-input-container'>
             <Input attribute={{
-                id: 'name',
-                name: 'name',
+                id: 'firstName',
+                name: 'firstName',
                 type: 'text',
                 placeholder: 'Ingrese su Nombre'
             }}

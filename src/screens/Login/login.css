@@ -65,16 +65,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.index-pass-icons{
-    display: flex;
     color: #EEF1FA;
     width: 70vh;
-    padding-left: 45vh;
+    padding-left: 25px;
 }
 
 .index-eye-icon {
     cursor: pointer;
-    margin-top: 1vh;
 }

@@ -27,7 +27,7 @@ function Sidebar() {
                                 </ListItem>
                             </NavLink>
                         </li>
-                        <li className='sidebar-list-item'>
+                        <li >
                             <NavLink exact to="/dashboard/courses" className='sidebar-list-item' activeClassName='active'>
                                 <ListItem button>
                                     <TrendingUp className='sidebar-icon'/>
@@ -38,7 +38,7 @@ function Sidebar() {
                     </u1>
                     <h3 className='sidebar-title'>Quick Menu</h3>
                     <u1 className='sidebar-list'>
-                        <li className='sidebar-list-item'>
+                        <li >
                             <NavLink to="/dashboard/admin" className='sidebar-list-item' activeClassName='active'>
                                 <ListItem button>
                                     <SupervisorAccountOutlined className='sidebar-icon'/>

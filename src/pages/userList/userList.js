@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './userList.css';
 import { Title, Modal, Label, Input, passwordRegex, validateEmail } from '../../components';
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline, Visibility } from "@material-ui/icons";
+import { DeleteOutline, Visibility, BlockOutlined } from "@material-ui/icons";
 import axios from 'axios';
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
@@ -39,7 +39,7 @@ function UserList() {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            password: password
+            password: password,
         });
         console.log("user:", user);
         axios
@@ -91,7 +91,8 @@ function UserList() {
             firstName: params.row.firstName,
             lastName: params.row.lastName,
             email: params.row.email,
-            password: params.row.password
+            password: params.row.password,
+            role: params.row.role
         });
         handleShowVisualitazion(true)
 
@@ -112,7 +113,7 @@ function UserList() {
                     <button className='users-edit' onClick={() => handleEdition(params)}>
                         Edit
                     </button>
-                    <DeleteOutline className='users-delete' onClick={() => handleConfirmDeletion(params)}/>
+                    <BlockOutlined className='users-delete' onClick={() => handleConfirmDeletion(params)}/>
                     <Visibility className='users-visualize' onClick={() => handleVisualization(params)}/>
                     </>
                 )
@@ -194,8 +195,8 @@ function UserList() {
                         rows={userInfos}
                         disableSelectionOnClick
                         columns={columns}
-                        pageSize={5}
-                        rowsPerPageOptions={[5]}
+                        pageSize={10}
+                        rowsPerPageOptions={[10]}
                         checkboxSelection
                     />
                     </div>
@@ -299,11 +300,17 @@ function UserList() {
                             <div className='modal-visualizing-container' >
                                 {user.email}
                             </div>
+                            <li className='modal-list-item'>
+                                <Label text='Email'/>
+                                <div className='modal-visualizing-container' >
+                                    {user.email}
+                                </div>
+                            </li>
                         </li>
-                        <li className='modal-list-item'>       
-                            <Label text='Password'/>
+                        <li className='modal-list-item'>
+                            <Label text='Role'/>
                             <div className='modal-visualizing-container' >
-                                ****************
+                                {user.role}
                             </div>
                         </li>
                     </u1>                    

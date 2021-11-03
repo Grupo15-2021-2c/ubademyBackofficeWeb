@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import './topbar.css';
 import { NotificationsNone, Language, Settings } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
 import { Link, Avatar } from '@material-ui/core';
+import { DropDownMenu } from '../index';
 
 function Topbar( { account }) {
+
+    const [ openSettings, setOpenSettings ] = useState(false);
 
     function stringToColor(string) {
         let hash = 0;
@@ -27,6 +30,7 @@ function Topbar( { account }) {
       }
 
     function stringAvatar(name) {
+      console.log("top bar: ", account);
         return {
           sx: {
             bgcolor: stringToColor(name),
@@ -34,6 +38,17 @@ function Topbar( { account }) {
           children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
         };
       }
+
+    function handleSettingsMenu(){
+      console.log("Settings");
+      setOpenSettings(!openSettings);
+    }
+
+    function handleLogOut(){
+      console.log("Log Out");
+      localStorage.clear();
+      window.location.href = '/';
+    }
 
     return (
         <div className='topbar'>
@@ -55,7 +70,13 @@ function Topbar( { account }) {
                         <span className='top-icon-badge'>2</span>
                     </div>
                     <div className='topbar-icons-container'>
-                        <Settings/>
+                        <Settings onClick={(handleSettingsMenu)}/>
+                        {openSettings && 
+                        <DropDownMenu>
+                          <button className='topbar-buttons'> Otra Cosa</button>
+                          <button className='topbar-buttons'> Otra Cosa</button>
+                          <button className='topbar-buttons' onClick={(handleLogOut)}> Log Out</button>
+                        </DropDownMenu>}
                     </div>
                     <Avatar className='topbar-icons-container' {...stringAvatar('Facundo Walter')} />
                 </div>
