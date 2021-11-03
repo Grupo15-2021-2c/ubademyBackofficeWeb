@@ -23,8 +23,8 @@ function UserList() {
     const handleShow = () => setShow(true);
     const handleCloseVisualitazion = () => setShowVisualization(false);
     const handleShowVisualitazion = () => setShowVisualization(true);
-    const handleCloseDeletion = () => setShowDeletion(false)
-    const handleShowDeletion = () => setShowDeletion(true);
+    const handleCloseBlock = () => setShowDeletion(false)
+    const handleShowBlock = () => setShowDeletion(true);
     const [firstName, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -63,25 +63,34 @@ function UserList() {
         handleShow();
     };
     
-    const handleConfirmDeletion = (params) => {
+    const handleConfirmBlock = (params) => {
         setUser({ 
             id: params.row.id,
             firstName: params.row.firstName,
             lastName: params.row.lastName,
             email: params.row.email,
-            password: params.row.password
+            password: params.row.password,
+            blocked: params.row.blocked
         });
 
-        handleShowDeletion(true);
+        handleShowBlock(true);
     };
 
-    const handleDeletion= (id) => {
+    const handleBlock= (id, blocked) => {
+        let payload = '';
+        console.log(blocked);
+        if (!blocked){
+            payload = url + "/" + id + "/block";
+        }else{
+            payload = url + "/" + id + "/unblock";
+        }
+        console.log(payload);
         axios
-        .delete(url+ "/" + id)
+        .patch(payload)
             .then(res => { 
                 console.log(res);
                 setToggleRefreshList(!toggleRefreshList);
-                handleCloseDeletion();
+                handleCloseBlock();
             })
     }
 
@@ -92,6 +101,7 @@ function UserList() {
             lastName: params.row.lastName,
             email: params.row.email,
             password: params.row.password,
+            blocked: params.row.blocked,
             role: params.row.role
         });
         handleShowVisualitazion(true)
@@ -99,10 +109,11 @@ function UserList() {
     };
     
     const columns = [
-        { field: 'id', headerName: 'ID', width: 30 },
+        { field: 'id', headerName: 'ID', width: 100 },
         { field: 'firstName', headerName: 'First name', width: 150 },
         { field: 'lastName', headerName: 'Last name', width: 150 },
         { field: 'email', headerName: 'Email', width: 200 },
+        { field: 'blocked', headerName: 'Blocked', width: 200 },
         {
             field: 'action',
             headerName: 'Action',
@@ -113,7 +124,7 @@ function UserList() {
                     <button className='users-edit' onClick={() => handleEdition(params)}>
                         Edit
                     </button>
-                    <BlockOutlined className='users-delete' onClick={() => handleConfirmDeletion(params)}/>
+                    <BlockOutlined className='users-delete' onClick={() => handleConfirmBlock(params)}/>
                     <Visibility className='users-visualize' onClick={() => handleVisualization(params)}/>
                     </>
                 )
@@ -313,6 +324,12 @@ function UserList() {
                                 {user.role}
                             </div>
                         </li>
+                        <li className='modal-list-item'>
+                            <Label text='Blocked'/>
+                            <div className='modal-visualizing-container' >
+                                {user.blocked ? <>Blocked</> : <>Not Blocked</>}
+                            </div>
+                        </li>
                     </u1>                    
                 </div>
                 <button onClick={() => handleCloseVisualitazion()} 
@@ -320,20 +337,20 @@ function UserList() {
                     Salir
                 </button>
             </Modal>
-            <Modal title={user} visibility={showDeletion} editing={show} onClose={handleCloseDeletion}>
+            <Modal title={user} visibility={showDeletion} editing={show} onClose={handleCloseBlock}>
                 <div className='modal-body'>
                     <u1 className='modal-list'>
                         <li className='modal-list-item'>
-                            <Label text={'¿Está seguro que desea eliminar al usuario: ' + user.firstName + ' ' + user.lastName + '?'}/>
+                            <Label text={'¿Está seguro que desea bloquear/desbloquear al usuario: ' + user.firstName + ' ' + user.lastName + '?'}/>
                         </li>
                     </u1>
                 </div>
                 <div className='modal-footer'>
-                    <button onClick={() => handleCloseDeletion()} 
+                    <button onClick={() => handleCloseBlock()} 
                     data-disabled='modal' className='modal-button'>
                         Cancelar
                     </button>
-                    <button onClick={() => handleDeletion(user.id)} 
+                    <button onClick={() => handleBlock(user.id, user.blocked)} 
                     data-disabled='modal' className='modal-button'>
                         Confirmar
                     </button>
