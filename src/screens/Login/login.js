@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { MailOutline, LockOutlined, Visibility, VisibilityOff } from '@material-ui/icons';
 import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
-import { Dashboard } from '../index';
 import logo from '../../images/ubademylogo.png';
+import { setValue } from '../../services/index';
 import './login.css';
 import { Link, Grid } from '@material-ui/core';
 import axios from 'axios'; 
@@ -49,8 +49,11 @@ const Login = () => {
             })
                 .then(res => { 
                     console.log(res.data);
+                    console.log(res.data.status);
+                    console.log(res.data.data);
                     localStorage.setItem('access_token', res.statusText);
-                    //<Dashboard account={res.data}/>
+                    //setValue('access_token', res.statusText);
+                    setValue('user', res.data);
                     window.location='/dashboard';
                 })
                 .catch(error => {

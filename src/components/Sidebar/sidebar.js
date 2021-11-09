@@ -55,7 +55,7 @@ function Sidebar() {
                         <li className='sidebar-list-item'>
                             <ListItem button>
                                 <TrendingUp className='sidebar-icon'/>
-                                Cursos
+                                Curso
                             </ListItem>
                         </li>
                     </u1>

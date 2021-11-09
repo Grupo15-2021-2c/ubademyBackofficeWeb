@@ -4,8 +4,12 @@ import { NotificationsNone, Language, Settings } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
 import { Link, Avatar } from '@material-ui/core';
 import { DropDownMenu } from '../index';
+import { getValue, removeValue } from '../../services/index';
 
-function Topbar( { account }) {
+
+const user = getValue('user');
+
+function Topbar() {
 
     const [ openSettings, setOpenSettings ] = useState(false);
 
@@ -29,8 +33,10 @@ function Topbar( { account }) {
         return color;
       }
 
-    function stringAvatar(name) {
-      console.log("top bar: ", account);
+    function stringAvatar() {
+      let name = user.data.firstName + ' ' + user.data.lastName;
+      console.log(user.data.firstName);
+      //let name = 'Facu Walter';
         return {
           sx: {
             bgcolor: stringToColor(name),
@@ -46,7 +52,7 @@ function Topbar( { account }) {
 
     function handleLogOut(){
       console.log("Log Out");
-      localStorage.clear();
+      localStorage.removeItem('access_token');
       window.location.href = '/';
     }
 
@@ -78,7 +84,7 @@ function Topbar( { account }) {
                           <button className='topbar-buttons' onClick={(handleLogOut)}> Log Out</button>
                         </DropDownMenu>}
                     </div>
-                    <Avatar className='topbar-icons-container' {...stringAvatar('Facundo Walter')} />
+                    <Avatar className='topbar-icons-container' {...stringAvatar()} />
                 </div>
             </div>
         </div>

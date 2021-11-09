@@ -44,7 +44,7 @@ function WidgetSm({ data }) {
             {userInfos.map((user) => (
                     <>
                     {user.role === 'ADMIN' &&
-                    <tr className='widgetSm-user'>
+                    <tr key={user.id} className='widgetSm-user'>
                       <td>
                         <img src={jovenConfiado} alt='' className='widgetSm-image'/>   
                       </td>
