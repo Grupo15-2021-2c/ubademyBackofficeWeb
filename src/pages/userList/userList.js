@@ -13,7 +13,6 @@ function UserList() {
 
 
     const [user, setUser] = useState({});
-    //const [userData, setUserData] = useState();
     const [userInfos, setUserInfos] = useState([]);
     const [toggleRefreshList, setToggleRefreshList] = useState(false);
     const [show, setShow] = useState(false);

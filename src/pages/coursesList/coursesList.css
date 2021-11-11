@@ -39,3 +39,10 @@
     cursor: pointer;
     margin-left: 20px;
 }
+
+.courses-delete {
+    flex: 1;
+    align-items: center;
+    color: #E63946;
+    cursor: pointer;
+}

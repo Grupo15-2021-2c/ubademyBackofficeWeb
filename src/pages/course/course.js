@@ -1,50 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './course.css';
-/*import { Title, Modal, Label, Input, passwordRegex, validateEmail } from '../../components';
-/*import { DataGrid, getInitialGridColumnResizeState } from "@material-ui/data-grid";
-import { Visibility, BlockOutlined } from "@material-ui/icons";*/
-import { getCourseSelected } from '../../services/index';
-import axios from 'axios';
-
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/courses/';
+import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected, setInscriptionSelected } from '../../services/index';
+import { BrowserRouter as Router, Switch, Route,  NavLink } from 'react-router-dom';
+import {  Modal, Label } from '../../components';
 
 
 function Course() {
 
-
-  //const [courseInfos, setCourseInfos] = useState();
   const [sectionsInfos, setSectionsInfo] = useState([]);
   const [categoriesInfos, setCategoriesInfo] = useState([]);
-  const [toggleRefreshList, setToggleRefreshList] = useState(false);
+  const [inscriptionSelected, setInscriptionInfo] = useState(getInscriptionSelected());
+  const [show, setShow] = useState(false);
+  const [courseInfos, setCourseInfo] = useState(getCourseSelected());
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
 
-  const courseInfos = getCourseSelected();
-
-  const fetchSections = (id) => {
-    let payload = url + id + '/sections';
-    return axios.get(payload)
-    .then(({data}) => {
-        //handle success
-        return data.data;
-    })
-    .catch(err =>{
-        //handle error
-        console.error("error",err);
-    })
-  }
-
-  const fetchCategories = (id) => {
-    let payload = url + 'categories/' + id;
-    console.log(payload);
-    return axios.get(payload)
-    .then(({data}) => {
-        //handle success
-        return data.data;
-    })
-    .catch(err =>{
-        //handle error
-        console.error("error",err);
-    })
+  const handleShowInscriptions = () => {
+    console.log("inscriptions");
+    handleShow();
+    <NavLink exact to={"/dashboard/course/"+ courseInfos.id + '/inscripted'}  activeClassName='active'></NavLink>
   }
 
   useEffect(() => {
@@ -56,13 +31,12 @@ function Course() {
       setCategoriesInfo(categoriesData)
     });
 
-  },[toggleRefreshList]);
-
-
+  },[]);
+  
   return (
     <div className='course'>
       { courseInfos && 
-      <>
+      <div className='course-container'>
       <div className='course-title-container'>
         <h1 className='course-title'>
           Course {courseInfos.title}
@@ -82,6 +56,10 @@ function Course() {
           <span> {JSON.stringify(categoriesInfos.name)}</span>
         </div>
         <div className='course-list-item'>
+          <span>Inscriptions: </span>
+          <button className='course-button' onClick={() => handleShowInscriptions()}>{JSON.stringify(inscriptionSelected.length)}</button>
+        </div>
+        <div className='course-list-item'>
           <span>Blocked: </span>
           <span> {JSON.stringify(courseInfos.blocked)}</span>
         </div>
@@ -94,8 +72,7 @@ function Course() {
           <h1 className='course-title'>
             Sections:
           </h1>
-      </div>
-      {!sectionsInfos.lenght ? sectionsInfos.map((section) => (
+          {sectionsInfos.map((section) => (
         <>
           <div className='course-subtitle-container'>
               <h2 className='course-subtitle'>
@@ -115,11 +92,87 @@ function Course() {
             </div>
           </div>
         </>
-      ))
-      : <h1 className='course-title'> No Sections For this Course </h1>}
-      </>}
+      ))}
+      </div>
+      <Modal title={courseInfos} visibility={show} editing={false} onClose={handleClose}>
+                {inscriptionSelected.map((inscription) => (
+                  <div className='modal-body'>
+                      <u1 className='modal-list'>
+                          <li className='modal-list-item'>
+                              <Label text='User id'/>
+                              <div className='modal-visualizing-container' >
+                                  {JSON.stringify(inscription.id)}
+                              </div>
+                          </li>
+                          <li className='modal-list-item'>
+                              <Label text='First Name'/>
+                              <div className='modal-visualizing-container' >
+                                {inscription.firstName}
+                              </div>
+                          </li>
+                          <li className='modal-list-item'>
+                              <Label text='Last Name'/>
+                              <div className='modal-visualizing-container' >
+                                {inscription.lastName}
+                              </div>
+                          </li>
+                          <li className='modal-list-item'>
+                              <Label text='Email'/>
+                              <div className='modal-visualizing-container' >
+                                {inscription.email}
+                              </div>
+                          </li>
+                      </u1>                    
+                  </div>
+                  ))}
+                <button onClick={() => handleClose()} 
+                data-disabled='modal' className='modal-button-exit'>
+                    Salir
+                </button>
+            </Modal>
+      </div>}
+ 
     </div>
     );
   }
 
   export default Course;
+
+  /*
+       <Modal title={courseInfos} visibility={show} editing={false} onClose={handleClose}>
+                {inscriptionSelected.map((inscription) => (
+                  <div className='modal-body'>
+                      <u1 className='modal-list'>
+                          <li className='modal-list-item'>
+                              <Label text='User id'/>
+                              <div className='modal-visualizing-container' >
+                                  {JSON.stringify(inscription.id)}
+                              </div>
+                          </li>
+                          <li className='modal-list-item'>
+                              <Label text='First Name'/>
+                              <div className='modal-visualizing-container' >
+                                {inscription.firstName}
+                              </div>
+                          </li>
+                          <li className='modal-list-item'>
+                              <Label text='Last Name'/>
+                              <div className='modal-visualizing-container' >
+                                {inscription.lastName}
+                              </div>
+                          </li>
+                          <li className='modal-list-item'>
+                              <Label text='Email'/>
+                              <div className='modal-visualizing-container' >
+                                {inscription.email}
+                              </div>
+                          </li>
+                      </u1>                    
+                  </div>
+                  ))}
+                <button onClick={() => handleClose()} 
+                data-disabled='modal' className='modal-button-exit'>
+                    Salir
+                </button>
+            </Modal>
+   */

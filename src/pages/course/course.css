@@ -6,8 +6,14 @@
     padding: 20px;
 }
 
+.course-container {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .course-title-container {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     align-self: center;
@@ -28,6 +34,7 @@
     -webkit-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     background-color: #EEF1FA;
+    cursor: pointer;
 }
 
 .course-list-item {
@@ -38,4 +45,15 @@
     align-items: center;
     font-weight: 600;
     font-size: large;
+}
+
+.course-button{
+    background-color: #EEF1FA;
+    border: none;
+    outline: none;
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 600;
+    font-weight: bold;
+    cursor: pointer;
 }
