@@ -3,7 +3,7 @@ import { fetchCourseList, getCourseSelected, setCourseSelected } from './course/
 import { fetchInscriptionsList, getInscriptionSelected, setInscriptionSelected } from './inscriptions/inscriptions';
 import { fetchSections, getSectionSelected, setSectionSelected } from './sections/sections';
 import { fetchCategories, getCategorySelected, setCategorySelected } from './categories/categories';
-import { setLoading, getLoading } from './loading/loading';
+import { fetchResourcesList } from './resourses/resourses'
 
 export { 
     getValue, 
@@ -21,6 +21,5 @@ export {
     fetchCategories,
     getCategorySelected,
     setCategorySelected,
-    setLoading,
-    getLoading
+    fetchResourcesList,
 }

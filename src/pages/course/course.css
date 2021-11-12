@@ -34,7 +34,6 @@
     -webkit-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     background-color: #EEF1FA;
-    cursor: pointer;
 }
 
 .course-list-item {
@@ -49,11 +48,14 @@
 
 .course-button{
     background-color: #EEF1FA;
+    border-radius: 25px;
     border: none;
-    outline: none;
-    text-align: justify;
-    font-size: 18px;
-    font-weight: 600;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 550;
+}
+
+.course-button:hover {
+    box-shadow: inset 28vh 0 0 0 #a8dafa;
     cursor: pointer;
+    color: #1d3557;
 }

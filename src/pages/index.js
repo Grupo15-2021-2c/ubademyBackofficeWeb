@@ -3,5 +3,6 @@ import Admin from "./admin/admin";
 import UserList from "./userList/userList";
 import CoursesList from "./coursesList/coursesList";
 import Course from "./course/course";
+import Sections from "./sections/sections";
 
-export { Home, Admin, UserList, CoursesList, Course }
+export { Home, Admin, UserList, CoursesList, Course, Sections }

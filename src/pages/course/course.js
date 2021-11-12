@@ -3,15 +3,16 @@ import './course.css';
 import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected, setInscriptionSelected } from '../../services/index';
 import { BrowserRouter as Router, Switch, Route,  NavLink } from 'react-router-dom';
 import {  Modal, Label } from '../../components';
+import { Sections } from '../index';
 
 
 function Course() {
 
   const [sectionsInfos, setSectionsInfo] = useState([]);
   const [categoriesInfos, setCategoriesInfo] = useState([]);
-  const [inscriptionSelected, setInscriptionInfo] = useState(getInscriptionSelected());
+  const [inscriptionSelected ] = useState(getInscriptionSelected());
   const [show, setShow] = useState(false);
-  const [courseInfos, setCourseInfo] = useState(getCourseSelected());
+  const [courseInfos ] = useState(getCourseSelected());
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
@@ -19,7 +20,6 @@ function Course() {
   const handleShowInscriptions = () => {
     console.log("inscriptions");
     handleShow();
-    <NavLink exact to={"/dashboard/course/"+ courseInfos.id + '/inscripted'}  activeClassName='active'></NavLink>
   }
 
   useEffect(() => {
@@ -56,8 +56,7 @@ function Course() {
           <span> {JSON.stringify(categoriesInfos.name)}</span>
         </div>
         <div className='course-list-item'>
-          <span>Inscriptions: </span>
-          <button className='course-button' onClick={() => handleShowInscriptions()}>{JSON.stringify(inscriptionSelected.length)}</button>
+          <button className='course-button' onClick={() => handleShowInscriptions()}>Inscriptions: {JSON.stringify(inscriptionSelected.length)}</button>
         </div>
         <div className='course-list-item'>
           <span>Blocked: </span>
@@ -72,27 +71,7 @@ function Course() {
           <h1 className='course-title'>
             Sections:
           </h1>
-          {sectionsInfos.map((section) => (
-        <>
-          <div className='course-subtitle-container'>
-              <h2 className='course-subtitle'>
-                {section.subtitle}
-              </h2>
-          </div>
-          <div className='course-info'>
-            <div className='course-list-item'>
-              <span>Id: </span>
-              <span>{section.id}</span>
-            </div>
-            <div className='course-list-item'>
-              <span>About: </span>
-            </div>
-            <div className='course-list-item'>
-              <span>{section.body}</span>
-            </div>
-          </div>
-        </>
-      ))}
+          <Sections/>
       </div>
       <Modal title={courseInfos} visibility={show} editing={false} onClose={handleClose}>
                 {inscriptionSelected.map((inscription) => (
