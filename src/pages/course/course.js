@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './course.css';
-import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected } from '../../services/index';
+import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected, getLoading } from '../../services/index';
 import { BrowserRouter as Router, Switch, Route,  NavLink } from 'react-router-dom';
 import {  Modal, Label } from '../../components';
+import { Loading } from '../../components';
 import { Sections } from '../index';
 
 
@@ -10,17 +11,22 @@ function Course() {
 
   const [sectionsInfos, setSectionsInfo] = useState([]);
   const [categoriesInfos, setCategoriesInfo] = useState([]);
-  const [inscriptionSelected ] = useState(getInscriptionSelected());
+  const [inscriptionSelected, setInscription ] = useState(getInscriptionSelected());
   const [show, setShow] = useState(false);
   const [courseInfos ] = useState(getCourseSelected());
+  const [ loading, setLoading ] = useState(getLoading())
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
 
   const handleShowInscriptions = () => {
-    console.log("inscriptions");
     handleShow();
   }
+
+  const handleRefresh = () => {
+    setInscription(getInscriptionSelected());
+    setLoading(getLoading());
+}
 
   useEffect(() => {
     fetchSections(courseInfos.id).then((sectionsData) => {
@@ -29,9 +35,23 @@ function Course() {
     
     fetchCategories(courseInfos.categoryId).then((categoriesData) => {
       setCategoriesInfo(categoriesData)
+
+    setTimeout(() => {
+        handleRefresh();
+    }, 1000);
     });
 
   },[]);
+
+  if(loading){
+    return(
+    <div className='resources'>
+        <div className='resources-container'>
+            <Loading/>
+        </div>
+    </div>
+    );
+}
   
   return (
     <div className='course'>

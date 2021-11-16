@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/courses/';
 let CategorySelectedState = null;
 

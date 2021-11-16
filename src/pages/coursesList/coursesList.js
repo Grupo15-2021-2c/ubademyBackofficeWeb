@@ -4,7 +4,7 @@ import { Title, Modal, Label } from '../../components';
 import { DataGrid } from "@material-ui/data-grid";
 import { Visibility, BlockOutlined } from "@material-ui/icons";
 import { BrowserRouter as Router, Switch, Route,  Link } from 'react-router-dom';
-import { fetchCourseList, getCourseSelected, setCourseSelected, fetchInscriptionsList, setInscriptionSelected, getInscriptionSelected } from '../../services/index';
+import { fetchCourseList, setCourseSelected, fetchInscriptionsList, setInscriptionSelected } from '../../services/index';
 import axios from 'axios';
 
 

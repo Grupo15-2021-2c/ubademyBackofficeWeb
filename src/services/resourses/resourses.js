@@ -10,7 +10,6 @@ export const fetchResourcesList = (courseId, sectionId) => {
     return axios.get(payload)
     .then(({data}) => {
         //handle success
-        console.log("setLoading");
         setLoading(false);
         ResourcesSelectedState = data.data;
         return data.data;
