@@ -5,8 +5,6 @@ let InscriptionSelectedState = [];
 
 export const fetchInscriptionsList = (id) => {
     let payload = url + id + '/inscriptions';
-    console.log(payload);
-    console.log("loading");
     return axios.get(payload)
     .then(({data}) => {
         //handle success
@@ -18,11 +16,6 @@ export const fetchInscriptionsList = (id) => {
     })
   };
 
-export const getInscriptionSelected = () => { 
-    console.log("get", InscriptionSelectedState);
-    return InscriptionSelectedState; };
+export const getInscriptionSelected = () => { return InscriptionSelectedState; };
 
-export const setInscriptionSelected = (inscriptionSelected) => { 
-    
-    InscriptionSelectedState = inscriptionSelected; 
-    console.log("set", InscriptionSelectedState);}
+export const setInscriptionSelected = (inscriptionSelected) => { InscriptionSelectedState = inscriptionSelected; }

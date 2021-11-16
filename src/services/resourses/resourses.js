@@ -1,13 +1,18 @@
 import axios from 'axios';
+import { setLoading } from '../index';
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/resources/courses/';
+const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/courses/';
+let ResourcesSelectedState = [];
 
 export const fetchResourcesList = (courseId, sectionId) => {
-    let payload = url + courseId + '/sections/' + sectionId;
-    console.log(payload);
+    let payload = url + courseId + '/sections/' + sectionId + '/resources';
+    setLoading(true);
     return axios.get(payload)
     .then(({data}) => {
         //handle success
+        console.log("setLoading");
+        setLoading(false);
+        ResourcesSelectedState = data.data;
         return data.data;
     })
     .catch(err =>{
@@ -16,3 +21,8 @@ export const fetchResourcesList = (courseId, sectionId) => {
     })
 };
 
+export const setResourcesSelected = (resources) =>{ ResourcesSelectedState = resources }
+
+export const getResourcesSelected = () =>{ 
+    console.log(ResourcesSelectedState);
+    return ResourcesSelectedState; }

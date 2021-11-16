@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './sections.css';
-import { fetchSections, getCourseSelected } from '../../services/index';
+import { BrowserRouter as Router, Switch, Route,  Link } from 'react-router-dom';
+import { fetchSections, getCourseSelected, fetchResourcesList, setResourcesSelected } from '../../services/index';
 
 
 
 function Sections() {
 
     const [sectionsInfos, setSectionsInfo] = useState([]);
-    const [courseInfos ] = useState(getCourseSelected());
+    const [ courseInfos ] = useState(getCourseSelected());
+
+    const handleResources = (courseId, sectionId) =>{
+        fetchResourcesList(courseId, sectionId).then((resourcesInfo) => {
+            setResourcesSelected(resourcesInfo);
+        }); 
+    }
 
     useEffect(() => {
         fetchSections(courseInfos.id).then((sectionsData) => {
@@ -25,18 +32,20 @@ function Sections() {
                         {section.subtitle}
                     </h2>
                 </div>
-                <button className='section-info-sections'>
-                    <div className='section-list-item'>
-                        <span>Id: </span>
-                        <span>{section.id}</span>
-                    </div>
-                    <div className='section-list-item'>
-                        <span>About: </span>
-                    </div>
-                    <div className='section-list-item'>
-                        <span>{section.body}</span>
-                    </div>
-                </button>
+                <Link exact to={window.location.pathname + '/section/' + section.id + '/resources'} onClick={() => handleResources(courseInfos.id, section.id)}  activeClassName='active'>
+                    <button className='section-info-sections' >                
+                        <div className='section-list-item'>
+                            <span>Id: </span>
+                            <span>{section.id}</span>
+                        </div>
+                        <div className='section-list-item'>
+                            <span>About: </span>
+                        </div>
+                        <div className='section-list-item'>
+                            <span>{section.body}</span>
+                        </div>
+                    </button>
+                </Link>
                 </>
             ))}
         </div>

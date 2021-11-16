@@ -36,7 +36,6 @@ function Topbar() {
     function stringAvatar() {
       let name = user.data.firstName + ' ' + user.data.lastName;
       console.log(user.data.firstName);
-      //let name = 'Facu Walter';
         return {
           sx: {
             bgcolor: stringToColor(name),

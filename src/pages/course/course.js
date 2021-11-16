@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './course.css';
-import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected, setInscriptionSelected } from '../../services/index';
+import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected } from '../../services/index';
 import { BrowserRouter as Router, Switch, Route,  NavLink } from 'react-router-dom';
 import {  Modal, Label } from '../../components';
 import { Sections } from '../index';

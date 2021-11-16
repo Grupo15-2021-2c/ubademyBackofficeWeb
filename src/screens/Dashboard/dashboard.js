@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sidebar, Topbar } from '../../components';
-import { Home, Admin, UserList, CoursesList, Course } from '../../pages';
+import { Home, Admin, UserList, CoursesList, Course, Resources } from '../../pages';
 import './dashboard.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -11,7 +11,6 @@ function Dashboard() {
 
   const [toggleRefreshList, setToggleRefreshList] = useState(false);
   const [coursesInfos, setCoursesInfos] = useState([]);
-
 
   const fetchCourseList = () => {
     return axios.get(url)
@@ -58,6 +57,9 @@ function Dashboard() {
               <Switch key={course.id}>
                 <Route exact path={"/dashboard/course/:courseID" + course.id} component={Course}>
                   <Course />
+                </Route>
+                <Route exact path={"/dashboard/course/:courseID" + course.id + "/section/:sectionId/resources"} component={Resources}>
+                  <Resources />
                 </Route>
               </Switch>
             ))

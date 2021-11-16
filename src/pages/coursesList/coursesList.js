@@ -49,7 +49,6 @@ function CoursesList() {
     setCourseSelected(params.row);
     fetchInscriptionsList(params.row.id).then((inscription) => {
       setInscriptionSelected(inscription);
-      console.log("courseList: ", inscription);
     })
   };
 

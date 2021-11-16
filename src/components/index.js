@@ -10,5 +10,6 @@ import WidgetLg from './widgetLarge/widgetLg';
 import Modal from './Modal/modal';
 import DropDownMenu from './DropDownMenu/dropDownMenu';
 import { passwordRegex, validateEmail } from './Regex/regex';
+import Loading from './Loading/loading';
 
-export { Input, Title, Label, Topbar, Sidebar, Feature, Chart, WidgetSm, WidgetLg, Modal, DropDownMenu, passwordRegex, validateEmail }
+export { Input, Title, Label, Topbar, Sidebar, Feature, Chart, WidgetSm, WidgetLg, Modal, DropDownMenu, passwordRegex, validateEmail, Loading }
