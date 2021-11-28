@@ -1,13 +1,14 @@
 # Ubademy Backoffice Web
 
 ## Deployments
-ubademyBackofficeWeb is deployed in Heroku 
-* Production [branch main] [Backoffice Web Ubademy (prod)](https://backoffice-web-react.herokuapp.com/)
+ubademyBackofficeWeb is deployed in Heroku and Okteto 
+* Production [branch main] [Backoffice Web Ubademy (Okteto)](https://ubademy-frontend-lorenzolgz.cloud.okteto.net/)
+* Staging [branch develop] [Backoffice Web Ubademy (Heroku)](https://backoffice-web-react-stage.herokuapp.com/)
 
 ## Setup
 
 1. Install npm
-2. Install node (> 12)
+2. Install node (> 14)
 3. Clone repo
 4. Run `npm i`
 5. Run `npm start`
