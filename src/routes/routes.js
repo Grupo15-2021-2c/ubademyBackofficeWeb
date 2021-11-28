@@ -1,9 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
-import  { Login, Dashboard, NotFoundPage } from "../screens";
+import  { Login, Dashboard } from "../screens";
 import PrivateRoute from './privateRoutes';
 import image from '../images/backgroundImages.png';
-import { getValue } from '../services/index';
 import '../App.css';
 
 
