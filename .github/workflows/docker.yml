@@ -23,26 +23,22 @@ jobs:
     - name: checkout
       uses: actions/checkout@master
 
-    # comment
-    #- name: Create and populate kubernetes/backend.yml file
-    #  env:
-    #    GIT_DB_SECRET: ${{ secrets.DATABASE_URL }}
-    #    GIT_SHA_SECRET: ${{ github.sha }}
-    #  run: |
-    #    touch kubernetes/backend.yml
-    #    sed "s|DATABASE_URL_SECRET|$GIT_DB_SECRET|" kubernetes-templates/backend.yml | sed "s|GIT_SHA_SECRET|$GIT_SHA_SECRET|" > kubernetes/backend.yml
-    #    echo "cat kubernetes/backend.yml"
-    #    cat kubernetes/backend.yml
-    #
-    #    echo "ls -a ."
-    #    ls -a .
-    #
-    #    echo "ls -a ${{ github.workspace }}"
-    #    ls -a ${{ github.workspace }}
-    #  shell: bash
-    #
-    # comment
+    - name: Create and populate kubernetes/frontend.yml file
+      env:
+        GIT_SHA_SECRET: ${{ github.sha }}
+      run: |
+        touch kubernetes/frontend.yml
+        sed "s|GIT_SHA_SECRET|$GIT_SHA_SECRET|" kubernetes-templates/frontend.yml > kubernetes/frontend.yml
+        echo "cat kubernetes/frontend.yml"
+        cat kubernetes/frontend.yml
 
+        echo "ls -a ."
+        ls -a .
+
+        echo "ls -a ${{ github.workspace }}"
+        ls -a ${{ github.workspace }}
+      shell: bash
+    
     - uses: okteto/login@master
       with:
         token: ${{ secrets.OKTETO_TOKEN }}

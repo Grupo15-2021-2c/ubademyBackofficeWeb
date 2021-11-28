@@ -13,7 +13,7 @@ spec:
         app: ubademy-frontend
     spec:
       containers:
-      - image: lorenzogl/ubademy-backoffice-web:local #TODO change for commit sha tag
+      - image: lorenzogl/ubademy-backoffice-web:GIT_SHA_SECRET
         imagePullPolicy: Always
         name: ubademy-frontend
 
