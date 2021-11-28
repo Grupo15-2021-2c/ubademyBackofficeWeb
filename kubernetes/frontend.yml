@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubademy-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubademy-frontend
+  template:
+    metadata:
+      labels:
+        app: ubademy-frontend
+    spec:
+      containers:
+      - image: lorenzogl/ubademy-backoffice-web:local #TODO change for commit sha tag
+        imagePullPolicy: Always
+        name: ubademy-frontend
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ubademy-frontend
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP  
+  ports:
+  - name: "ubademy-frontend"
+    port: 80
+    targetPort: 3000
+  - name: "database"
+    port: 5432
+  selector:
+    app: ubademy-frontend

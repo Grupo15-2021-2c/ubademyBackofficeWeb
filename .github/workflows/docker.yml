@@ -15,3 +15,44 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         tags: ${{ github.sha }}
+
+  push-okteto-pipeline:
+    needs: publish-docker-image
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+
+    # comment
+    #- name: Create and populate kubernetes/backend.yml file
+    #  env:
+    #    GIT_DB_SECRET: ${{ secrets.DATABASE_URL }}
+    #    GIT_SHA_SECRET: ${{ github.sha }}
+    #  run: |
+    #    touch kubernetes/backend.yml
+    #    sed "s|DATABASE_URL_SECRET|$GIT_DB_SECRET|" kubernetes-templates/backend.yml | sed "s|GIT_SHA_SECRET|$GIT_SHA_SECRET|" > kubernetes/backend.yml
+    #    echo "cat kubernetes/backend.yml"
+    #    cat kubernetes/backend.yml
+    #
+    #    echo "ls -a ."
+    #    ls -a .
+    #
+    #    echo "ls -a ${{ github.workspace }}"
+    #    ls -a ${{ github.workspace }}
+    #  shell: bash
+    #
+    # comment
+
+    - uses: okteto/login@master
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+    
+    - name: "Activate personal namespace"
+      uses: okteto/namespace@master
+      with:
+        namespace: lorenzolgz
+
+    - name: "Create deployment"
+      uses: okteto/apply@master
+      with:
+        manifest: kubernetes
