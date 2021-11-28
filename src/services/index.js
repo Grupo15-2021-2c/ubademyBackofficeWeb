@@ -1,5 +1,5 @@
 import { getValue, setValue, removeValue } from './localStorage/localStorageService';
-import { fetchCourseList, getCourseSelected, setCourseSelected } from './course/courseSelected';
+import { fetchCourseList, fetchCourseById, getCourseSelected, setCourseSelected } from './course/courseSelected';
 import { fetchInscriptionsList, getInscriptionSelected, setInscriptionSelected } from './inscriptions/inscriptions';
 import { fetchSections, getSectionSelected, setSectionSelected } from './sections/sections';
 import { fetchCategories, getCategorySelected, setCategorySelected } from './categories/categories';
@@ -10,7 +10,8 @@ export {
     getValue, 
     setValue, 
     removeValue, 
-    fetchCourseList, 
+    fetchCourseList,
+    fetchCourseById,
     getCourseSelected, 
     setCourseSelected, 
     fetchInscriptionsList, 

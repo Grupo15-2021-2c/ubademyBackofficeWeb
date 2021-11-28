@@ -63,7 +63,7 @@ const SignUp = () => {
             </div>
             <Label text='Ya estás registrado?' />
             <div className='submit-button-container'>
-                <button className='link-button' onClick={(e) => window.location=`/`}>
+                <button className='link-button' onClick={() => window.location=`/`}>
                     <Label text='Login!' />
                 </button>
             </div>

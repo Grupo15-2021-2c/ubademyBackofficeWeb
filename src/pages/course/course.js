@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './course.css';
-import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected, getLoading } from '../../services/index';
-import { BrowserRouter as Router, Switch, Route,  NavLink } from 'react-router-dom';
+import { getCourseSelected, fetchCourseById, fetchSections, fetchCategories, getInscriptionSelected, getLoading } from '../../services/index';
 import {  Modal, Label } from '../../components';
 import { Loading } from '../../components';
 import { Sections } from '../index';
 
+const regex = /(\d+)/g;
 
 function Course() {
 
-  const [sectionsInfos, setSectionsInfo] = useState([]);
+  const [, setSectionsInfo] = useState([]);
   const [categoriesInfos, setCategoriesInfo] = useState([]);
   const [inscriptionSelected, setInscription ] = useState(getInscriptionSelected());
   const [show, setShow] = useState(false);
-  const [courseInfos ] = useState(getCourseSelected());
+  const [ courseInfos, setCourse ] = useState(getCourseSelected());
   const [ loading, setLoading ] = useState(getLoading())
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-
+  const id = (window.location.pathname.match(regex));
 
   const handleShowInscriptions = () => {
     handleShow();
@@ -29,6 +29,10 @@ function Course() {
 }
 
   useEffect(() => {
+
+    console.log(id[0]);
+    setCourse(fetchCourseById(id[0]));
+
     fetchSections(courseInfos.id).then((sectionsData) => {
         setSectionsInfo(sectionsData);
     })
@@ -39,6 +43,7 @@ function Course() {
     setTimeout(() => {
         handleRefresh();
     }, 1000);
+    
     });
 
   },[]);
@@ -95,6 +100,7 @@ function Course() {
       </div>
       <Modal title={courseInfos} visibility={show} editing={false} onClose={handleClose}>
                 {inscriptionSelected.map((inscription) => (
+                  <>
                   <div className='modal-body'>
                       <u1 className='modal-list'>
                           <li className='modal-list-item'>
@@ -123,6 +129,7 @@ function Course() {
                           </li>
                       </u1>                    
                   </div>
+                  </>
                   ))}
                 <button onClick={() => handleClose()} 
                 data-disabled='modal' className='modal-button-exit'>
@@ -136,42 +143,3 @@ function Course() {
   }
 
   export default Course;
-
-  /*
-       <Modal title={courseInfos} visibility={show} editing={false} onClose={handleClose}>
-                {inscriptionSelected.map((inscription) => (
-                  <div className='modal-body'>
-                      <u1 className='modal-list'>
-                          <li className='modal-list-item'>
-                              <Label text='User id'/>
-                              <div className='modal-visualizing-container' >
-                                  {JSON.stringify(inscription.id)}
-                              </div>
-                          </li>
-                          <li className='modal-list-item'>
-                              <Label text='First Name'/>
-                              <div className='modal-visualizing-container' >
-                                {inscription.firstName}
-                              </div>
-                          </li>
-                          <li className='modal-list-item'>
-                              <Label text='Last Name'/>
-                              <div className='modal-visualizing-container' >
-                                {inscription.lastName}
-                              </div>
-                          </li>
-                          <li className='modal-list-item'>
-                              <Label text='Email'/>
-                              <div className='modal-visualizing-container' >
-                                {inscription.email}
-                              </div>
-                          </li>
-                      </u1>                    
-                  </div>
-                  ))}
-                <button onClick={() => handleClose()} 
-                data-disabled='modal' className='modal-button-exit'>
-                    Salir
-                </button>
-            </Modal>
-   */

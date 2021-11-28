@@ -1,7 +1,7 @@
 import React from "react";
 import './feature.css';
 
-function Feature({ attribute }) {
+function Feature() {
 
     return (
       <div className='feature-container'>

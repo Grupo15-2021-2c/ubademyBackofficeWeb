@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './sections.css';
-import { BrowserRouter as Router, Switch, Route,  Link } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'; //Router, Switch, Route,
 import { fetchSections, getCourseSelected, fetchResourcesList, setResourcesSelected } from '../../services/index';
 
 
@@ -53,3 +54,5 @@ function Sections() {
   }
   
   export default Sections;
+
+  //mostrar nombre del curso, categoria y nombre del owner

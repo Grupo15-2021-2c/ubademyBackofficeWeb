@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
 
-function WidgetSm({ data }) {
+function WidgetSm() {
   const [userInfos, setUserInfos] = useState([]);
   const [toggleRefreshList, setToggleRefreshList] = useState(false);
 

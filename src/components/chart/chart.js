@@ -1,9 +1,17 @@
 import React from "react";
 import './chart.css';
+import PropTypes from 'prop-types';
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
 function Chart({title, data, dataKey, grid}) {
+
+    Chart.propTypes = {
+      title: PropTypes.node.isRequired,
+      data: PropTypes.node.isRequired,
+      dataKey: PropTypes.node.isRequired,
+      grid: PropTypes.node.isRequired,
+    };
 
     return (
       <div className='chart-container'>

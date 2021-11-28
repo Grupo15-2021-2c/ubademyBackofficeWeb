@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './widgetLg.css';
 import jovenConfiado from '../../images/joven-confiado.jpg';
-import { Visibility } from "@material-ui/icons";
 import axios from 'axios';
 
 const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
 
 
-function WidgetLg({ attribute }) {
+function WidgetLg() {
 
   const [userInfos, setUserInfos] = useState([]);
   const [toggleRefreshList, setToggleRefreshList] = useState(false);

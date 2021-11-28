@@ -4,7 +4,7 @@ import { NotificationsNone, Language, Settings } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
 import { Link, Avatar } from '@material-ui/core';
 import { DropDownMenu } from '../index';
-import { getValue, removeValue } from '../../services/index';
+import { getValue } from '../../services/index';
 
 
 const user = getValue('user');
