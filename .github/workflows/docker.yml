@@ -22,6 +22,7 @@ jobs:
       - run: npm run lint
 
   publish-docker-image:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
