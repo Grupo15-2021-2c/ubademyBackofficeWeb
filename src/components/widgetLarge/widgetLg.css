@@ -9,21 +9,28 @@
     box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     -webkit-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
+    overflow: scroll;
+    display: block;
 }
 
 .widgetLg-title {
     font-size: 25px;
     font-weight: 600;
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 .widgetLg-table {
     width: 100%;
-    border-spacing: 20px;
+    border-spacing: 20px; 
 }
+
 
 .widgetLg-th {
     text-align: center;
+    justify-content: space-between;
 }
 
 .widgetLg-button {
