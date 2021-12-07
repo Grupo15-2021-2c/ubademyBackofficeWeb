@@ -4,8 +4,9 @@ import { Input, Title, Label, passwordRegex, validateEmail } from '../../compone
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
 import axios from 'axios';
+import {API_BASE_URL} from "../../constants/constants";
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users/admins/register';
+const url = API_BASE_URL + '/users/admins/register';
 
 
 function Admin() {

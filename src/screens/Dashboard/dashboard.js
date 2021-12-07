@@ -4,8 +4,9 @@ import { Home, Admin, UserList, CoursesList, Course, Resources } from '../../pag
 import './dashboard.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
+import {API_BASE_URL} from "../../constants/constants";
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/courses';
+const url = API_BASE_URL + '/courses';
 
 function Dashboard() {
 

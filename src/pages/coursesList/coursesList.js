@@ -7,9 +7,10 @@ import { Visibility, BlockOutlined } from "@material-ui/icons";
 import { BrowserRouter as Router, Switch, Route,  Link } from 'react-router-dom';
 import { fetchCourseList, setCourseSelected, fetchInscriptionsList, setInscriptionSelected } from '../../services/index';
 import axios from 'axios';
+import {API_BASE_URL} from "../../constants/constants";
 
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/courses/';
+const url = API_BASE_URL + '/courses/';
 
 function CoursesList() {
 

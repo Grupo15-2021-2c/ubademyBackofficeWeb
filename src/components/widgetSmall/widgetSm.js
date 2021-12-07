@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import './widgetSm.css';
 import jovenConfiado from '../../images/joven-confiado.jpg';
 import axios from 'axios';
+import {API_BASE_URL} from "../../constants/constants";
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
+const url = API_BASE_URL + '/users';
 
 function WidgetSm() {
   const [userInfos, setUserInfos] = useState([]);

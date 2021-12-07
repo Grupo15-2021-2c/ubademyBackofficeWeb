@@ -4,8 +4,9 @@ import { Title, Modal, Label, Input, passwordRegex, validateEmail } from '../../
 import { DataGrid } from "@material-ui/data-grid";
 import { Visibility, BlockOutlined } from "@material-ui/icons";
 import axios from 'axios';
+import {API_BASE_URL} from "../../constants/constants";
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users';
+const url = API_BASE_URL + '/users';
 
 
 

@@ -5,10 +5,11 @@ import logo from '../../images/ubademylogo.png';
 import { setValue } from '../../services/index';
 import './login.css';
 import { Link, Grid } from '@material-ui/core';
-import axios from 'axios'; 
+import axios from 'axios';
+import {API_BASE_URL} from "../../constants/constants";
 
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/users/admins/login';
+const url = API_BASE_URL + '/users/admins/login';
 
 const Login = () => {
     //const [account, setAccount] = useState();

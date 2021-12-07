@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { setLoading } from '../index';
+import {API_BASE_URL} from "../../constants/constants";
 
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/courses/';
+const url = API_BASE_URL + '/courses/';
 let SectionSelectedState = null;
 
 export const fetchSections = (id) => {

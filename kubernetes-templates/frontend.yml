@@ -16,6 +16,9 @@ spec:
       - image: lorenzogl/ubademy-backoffice-web:GIT_SHA_SECRET
         imagePullPolicy: Always
         name: ubademy-frontend
+        env:
+        - name: IS_PROD
+          value: true
 
 ---
 
