@@ -1,1 +1,1 @@
-export const API_BASE_URL = process.env.IS_PROD ? 'https://ubademy-ts-lorenzolgz.cloud.okteto.net/api' : 'https://ubademy-g15-back-node-stage.herokuapp.com/api'
+export const API_BASE_URL = process.env.IS_PROD ? 'https://ubademy-ts-lorenzolgz.cloud.okteto.net/api' : 'https://ubademy-ts-lorenzolgz.cloud.okteto.net/api'
