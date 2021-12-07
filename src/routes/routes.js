@@ -3,16 +3,10 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import  { Login, Dashboard } from "../screens";
 import PrivateRoute from './privateRoutes';
 import image from '../images/backgroundImages.png';
-//import PropTypes from 'prop-types';
 import '../App.css';
 
 
-function Routes() { //{ component: Component, ...rest}
-
-    /*Routes.propTypes = {
-        component: PropTypes.node.isRequired,
-    };*/
-    
+function Routes() {
 
     return (
         <Router key='router' >

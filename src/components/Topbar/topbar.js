@@ -5,6 +5,8 @@ import logo from '../../images/ubademylogo.png';
 import { Link, Avatar } from '@material-ui/core';
 import { DropDownMenu } from '../index';
 import { getValue } from '../../services/index';
+import { googleAuth } from "../../firebase";
+import { removeValue } from '../../services/index';
 
 
 const user = getValue('user');
@@ -28,14 +30,11 @@ function Topbar() {
           const value = (hash >> (i * 8)) & 0xff;
           color += `00${value.toString(16)}`.substr(-2);
         }
-        /* eslint-enable no-bitwise */
-        //console.log(color);
         return color;
       }
 
     function stringAvatar() {
-      let name = user.data.firstName + ' ' + user.data.lastName;
-      console.log(user.data.firstName);
+      let name = user.firstName + ' ' + user.lastName;
         return {
           sx: {
             bgcolor: stringToColor(name),
@@ -45,13 +44,13 @@ function Topbar() {
       }
 
     function handleSettingsMenu(){
-      console.log("Settings");
       setOpenSettings(!openSettings);
     }
 
     function handleLogOut(){
-      console.log("Log Out");
+      googleAuth.signOut();
       localStorage.removeItem('access_token');
+      removeValue('user');
       window.location.href = '/';
     }
 

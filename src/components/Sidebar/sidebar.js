@@ -10,7 +10,7 @@ function Sidebar() {
             <div className='sidebar-wrapper'>
                 <div className='sidebar-menu'>
                     <h3 className='sidebar-title'>Usuarios</h3>
-                    <u1 className='sidebar-list'>
+                    <ul className='sidebar-list'>
                         <li>
                             <NavLink exact to="/dashboard" className='sidebar-list-item' activeClassName='active'>
                                 <ListItem button>
@@ -35,9 +35,9 @@ function Sidebar() {
                                 </ListItem>
                             </NavLink>
                         </li>
-                    </u1>
+                    </ul>
                     <h3 className='sidebar-title'>Quick Menu</h3>
-                    <u1 className='sidebar-list'>
+                    <ul className='sidebar-list'>
                         <li >
                             <NavLink to="/dashboard/admin" className='sidebar-list-item' activeClassName='active'>
                                 <ListItem button>
@@ -58,7 +58,7 @@ function Sidebar() {
                                 Curso
                             </ListItem>
                         </li>
-                    </u1>
+                    </ul>
                 </div>
             </div>
         </div>

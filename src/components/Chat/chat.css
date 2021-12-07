@@ -1,0 +1,7 @@
+.botom-bar {
+    width: 100%;
+    height: 50px;
+    position: sticky;
+    bottom: 0;
+    position: 999;
+}

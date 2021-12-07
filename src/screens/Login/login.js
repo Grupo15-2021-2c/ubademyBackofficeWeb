@@ -4,20 +4,43 @@ import { Input, Title, Label, passwordRegex, validateEmail } from '../../compone
 import logo from '../../images/ubademylogo.png';
 import { setValue } from '../../services/index';
 import './login.css';
-import { Link, Grid } from '@material-ui/core';
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
+// import { Grid } from '@material-ui/core';
+// import { googleAuth, googleAuthProvider  } from '../../firebase';
+// import { useAuthState } from 'react-firebase-hooks/auth';
+// import GoogleButton from 'react-google-button'
 
 
 const url = API_BASE_URL + '/users/admins/login';
 
 const Login = () => {
-    //const [account, setAccount] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [visible, setVisible] = useState(false);
+    // const [ user ] = useAuthState(googleAuth);
+
+    // if(user){
+    //     localStorage.setItem('access_token', "OK");
+    //     let valueUser = {
+    //         id: user.uid,
+    //         email: user.email,
+    //         firstName: user.displayName.split(' ')[0],
+    //         lastName: user.displayName.split(' ')[1],
+    //         role: 'ADMIN',
+    //         blocked: false,
+    //     }
+    //     console.log("user", valueUser);
+    //     setValue('user', valueUser);
+    //     window.location='/dashboard';
+    // }
+
+    // function signInWithGoogle(){
+    //     const provider = googleAuthProvider;
+    //     googleAuth.signInWithPopup(provider);
+    // }
 
     function handleChange(name, value){
         if (name === 'email'){
@@ -52,21 +75,14 @@ const Login = () => {
                     console.log(res.data);
                     console.log(res.data.status);
                     console.log(res.data.data);
-                    localStorage.setItem('access_token', res.statusText);
-                    //setValue('access_token', res.statusText);
-                    setValue('user', res.data);
+                    localStorage.setItem('access_token', res.data.status);
+                    setValue('user', res.data.data);
                     window.location='/dashboard';
                 })
                 .catch(error => {
                     console.log(error);
-                    alert('Invalid login info');
+                    alert(error.response.data.message);
                 });
-            }else{
-                if(emailError){
-                    alert("Usuario inválido");
-                }else{
-                    alert("Contraseña inválidas");
-                }
             }   
     }
 
@@ -86,13 +102,13 @@ const Login = () => {
         <div className='index-container'>
             <Title text='Bienvenido!' />
             <img src={logo} className="App-logo" alt="logo" />
-            <u1 className='index-list'>
+            <ul className='index-list'>
                 <li className='index-list-icons'>
                     <MailOutline/>
                     <Label text='Usuario' />
                 </li>
-            </u1>
-            <u1 className='index-list'>
+            </ul>
+            <ul className='index-list'>
                 <li className='index-pass-icons'>
             <Input attribute={{
                 id: 'email',
@@ -104,14 +120,14 @@ const Login = () => {
             param={emailError}
             />
             </li>
-            </u1>
-            <u1 className='index-list'>
+            </ul>
+            <ul className='index-list'>
                 <li className='index-list-icons'>
                     <LockOutlined/>
                     <Label text='Contraseña' />
                 </li>
-            </u1>
-            <u1 className='index-list'>
+            </ul>
+            <ul className='index-list'>
                 <li className='index-pass'>
                     <Input attribute={{
                         id: 'password',
@@ -125,7 +141,7 @@ const Login = () => {
                     </Input>
                     {visible ? <Visibility className='admin-eye-icon' onClick={togglePasswordVisiblity}/> : <VisibilityOff className='admin-eye-icon' onClick={togglePasswordVisiblity}/>}
                 </li>
-            </u1>
+            </ul>
             <div className='submit-button-container'>
                 <button className='submit-button'
                     onClick={handleSubmit}>
@@ -133,13 +149,9 @@ const Login = () => {
                 </button>
             </div>
             <div>
-            <Grid item>
-                <Link href="/SignUp" >
-                    <div className='link-button'>
-                        {'Olvidaste tu contraseña?'}
-                    </div>
-                </Link>
-            </Grid>
+            {/* <Grid item>
+                <GoogleButton cursor="pointer" type="dark" onClick={signInWithGoogle}/>
+            </Grid> */}
             </div>
         </div>
     );

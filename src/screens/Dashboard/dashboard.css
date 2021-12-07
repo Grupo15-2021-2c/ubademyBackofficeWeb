@@ -18,6 +18,22 @@
     z-index: 999;
 }
 
+.side-panel{
+    background-color: rgb(119, 160, 221);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 20%;
+}
+
+.chat-panel{
+    height: 20%;
+    width: 20%;
+    position: sticky;
+    bottom: 3;
+    z-index: 999;
+}
+
 .container {
     background-color: rgb(119, 160, 221);
     display: flex;

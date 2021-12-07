@@ -40,32 +40,35 @@ function Dashboard() {
             <Topbar />
           </div>
           <div className='container' >
-          <Sidebar />        
-          <Switch>
-            <Route exact path="/dashboard/admin" component={Admin}>
-              <Admin />
-            </Route>
-            <Route exact path="/dashboard">
-              <Home />
-            </Route>
-            <Route exact path="/dashboard/users" component={UserList}>
-              <UserList/>
-            </Route>
-            <Route exact path="/dashboard/courses" component={CoursesList}>
-              <CoursesList/>
-            </Route>
-            {coursesInfos.map((course) => (
-              <Switch key={course.id}>
-                <Route exact path={"/dashboard/course/:courseID" + course.id} component={Course}>
-                  <Course />
-                </Route>
-                <Route exact path={"/dashboard/course/:courseID" + course.id + "/section/:sectionId/resources"} component={Resources}>
-                  <Resources />
-                </Route>
-              </Switch>
-            ))
-          }
-          </Switch>         
+            <div className='side-panel'>
+              <Sidebar />
+            </div>
+
+            <Switch>
+              <Route exact path="/dashboard/admin" component={Admin}>
+                <Admin />
+              </Route>
+              <Route exact path="/dashboard">
+                <Home />
+              </Route>
+              <Route exact path="/dashboard/users" component={UserList}>
+                <UserList/>
+              </Route>
+              <Route exact path="/dashboard/courses" component={CoursesList}>
+                <CoursesList/>
+              </Route>
+              {coursesInfos.map((course) => (
+                <Switch key={course.id}>
+                  <Route exact path={"/dashboard/course/:courseID" + course.id} component={Course}>
+                    <Course />
+                  </Route>
+                  <Route exact path={"/dashboard/course/:courseID" + course.id + "/section/:sectionId/resources"} component={Resources}>
+                    <Resources />
+                  </Route>
+                </Switch>
+              ))
+            }
+            </Switch>
           </div>
         </div>
       </Router> 
