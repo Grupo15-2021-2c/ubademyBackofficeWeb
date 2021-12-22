@@ -3,11 +3,17 @@ import './admin.css';
 import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
+import { getValue } from '../../services/index';
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
 
 const url = API_BASE_URL + '/users/admins/register';
-
+const user = getValue('user');
+let varToken= '';
+if (user){
+    console.log("User Service", user);
+    varToken = user.token;
+}
 
 function Admin() {
 
@@ -61,14 +67,18 @@ function Admin() {
           method: 'post',
           url: `${url}`,
           data: payload
+      }, {
+        headers: {
+          Authorization: 'Bearer ' + varToken
+        }
       })
           .then(res => { 
-              console.log(res.statusText);
-              alert(res.statusText);
+              console.log(res);
+              alert('Succssesfully add Admin user');
               window.location.reload(false);
           })
           .catch(error => {
-              console.log(error);
+              console.log('error: ', error);
               alert(error);
           });
       }else{

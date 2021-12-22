@@ -5,6 +5,7 @@ import { fetchSections, getSectionSelected, setSectionSelected } from './section
 import { fetchCategories, getCategorySelected, setCategorySelected } from './categories/categories';
 import { fetchResourcesList, setResourcesSelected, getResourcesSelected } from './resourses/resourses'
 import { getLoading, setLoading } from './loading/loading';
+import { fetchUserList, handleBlockUser } from './users/users';
 
 export { 
     getValue, 
@@ -27,5 +28,7 @@ export {
     setResourcesSelected,
     getResourcesSelected,
     getLoading,
-    setLoading
+    setLoading,
+    fetchUserList,
+    handleBlockUser,
 }

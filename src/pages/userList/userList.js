@@ -3,12 +3,14 @@ import './userList.css';
 import { Title, Modal, Label, Input, passwordRegex, validateEmail } from '../../components';
 import { DataGrid } from "@material-ui/data-grid";
 import { Visibility, BlockOutlined } from "@material-ui/icons";
+import { fetchUserList, handleBlockUser } from "../../services";
+import { getValue } from '../../services/index';
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
 
 const url = API_BASE_URL + '/users';
-
-
+let varToken= '';
+const userData = getValue('user');
 
 function UserList() {
 
@@ -42,8 +44,15 @@ function UserList() {
             password: password,
         });
         console.log("user:", user);
+        if (userData){
+            varToken = user.token;
+        }
         axios
-            .put(url+ "/" + user.id, {firstName: `${firstName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`})
+            .patch(url+ "/" + user.id, {firstName: `${firstName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`},{
+                headers: {
+                  Authorization: 'Bearer ' + varToken
+                }
+              })
             .then(res => { 
                 console.log("res",res);
                 setToggleRefreshList(!toggleRefreshList);
@@ -77,7 +86,12 @@ function UserList() {
     };
 
     const handleBlock= (id, blocked) => {
-        let payload = '';
+        handleBlockUser(id, blocked).then(res => {
+            console.log(res);
+            setToggleRefreshList(!toggleRefreshList);
+            handleCloseBlock();
+        });
+        /*let payload = '';
         console.log(blocked);
         if (!blocked){
             payload = url + "/" + id + "/block";
@@ -91,7 +105,7 @@ function UserList() {
                 console.log(res);
                 setToggleRefreshList(!toggleRefreshList);
                 handleCloseBlock();
-            })
+            })*/
     }
 
     const handleVisualization = (params) => {
@@ -131,20 +145,6 @@ function UserList() {
             }
         }
       ];
-
-
-    const fetchUserList = () => {
-        return axios.get(url)
-        .then(({data}) => {
-            //handle succes
-            setToggleRefreshList(toggleRefreshList);
-            return data.data;
-        })
-        .catch(err =>{
-            //handle error
-            console.error("error",err);
-        })
-    }
 
     useEffect(() => {
         fetchUserList().then((userData) => {
@@ -363,6 +363,4 @@ function UserList() {
   }
   
   export default UserList;
-
-// modal para confirmar el delete
 

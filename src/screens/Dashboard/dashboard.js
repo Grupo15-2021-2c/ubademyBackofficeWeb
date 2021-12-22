@@ -3,35 +3,18 @@ import { Sidebar, Topbar } from '../../components';
 import { Home, Admin, UserList, CoursesList, Course, Resources } from '../../pages';
 import './dashboard.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
-import {API_BASE_URL} from "../../constants/constants";
-
-const url = API_BASE_URL + '/courses';
+import { fetchCourseList } from '../../services/index';
 
 function Dashboard() {
 
-  const [toggleRefreshList, setToggleRefreshList] = useState(false);
   const [coursesInfos, setCoursesInfos] = useState([]);
-
-  const fetchCourseList = () => {
-    return axios.get(url)
-    .then(({data}) => {
-        //handle success
-        setToggleRefreshList(toggleRefreshList);
-        return data.data;
-    })
-    .catch(err =>{
-        //handle error
-        console.error("error",err);
-    })
-  }
 
   useEffect(() => {
     fetchCourseList().then((coursesData) => {
         //setCourseData(JSON.stringify(courseData) || 'No course data found');
         setCoursesInfos(coursesData);
     });
-  },[toggleRefreshList]);
+  },[]);
 
     return (
       <Router>

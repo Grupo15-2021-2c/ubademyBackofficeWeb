@@ -20,7 +20,6 @@ function CoursesList() {
   const [toggleRefreshList, setToggleRefreshList] = useState(false);
   const handleCloseBlock = () => setShowDeletion(false)
   const handleShowBlock = () => setShowDeletion(true);
-  //const [cantInscriptions, setInscriptionsInfo] = useState([]);
 
   const handleConfirmBlock = (params) => {
     console.log("Blocked");
@@ -58,7 +57,6 @@ function CoursesList() {
     { field: 'id', headerName: 'ID', width: 100 },
     { field: 'owner', headerName: 'Owner', width: 150 },
     { field: 'categoryId', headerName: 'Category', width: 150 },
-    //{ field: {cantInscriptions}, headerName: 'Inscriptions', width: 200 },
     { field: 'blocked', headerName: 'Blocked', width: 150 },
     {
         field: 'action',

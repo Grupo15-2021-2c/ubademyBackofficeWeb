@@ -1,37 +1,20 @@
 import React, { useEffect, useState } from "react";
 import './widgetLg.css';
 import jovenConfiado from '../../images/joven-confiado.jpg';
-import axios from 'axios';
-import {API_BASE_URL} from "../../constants/constants";
-
-const url = API_BASE_URL + '/users';
+import { fetchUserList } from "../../services";
 
 
 function WidgetLg() {
 
   const [userInfos, setUserInfos] = useState([]);
-  const [toggleRefreshList, setToggleRefreshList] = useState(false);
 
-
-  const fetchUserList = () => {
-    return axios.get(url)
-    .then(({data}) => {
-        //handle succes
-        setToggleRefreshList(toggleRefreshList);
-        return data.data;
-    })
-    .catch(err =>{
-        //handle error
-        console.error("error",err);
-    })
-  }
 
   useEffect(() => {
     fetchUserList().then((userData) => {
         //setUserData(JSON.stringify(userData) || 'No user data found');
         setUserInfos(userData);
     });
-  },[toggleRefreshList]);
+  },[]);
 
     return (
       <div className='widgetLg-container'>

@@ -6,10 +6,6 @@ import { setValue } from '../../services/index';
 import './login.css';
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
-// import { Grid } from '@material-ui/core';
-// import { googleAuth, googleAuthProvider  } from '../../firebase';
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import GoogleButton from 'react-google-button'
 
 
 const url = API_BASE_URL + '/users/admins/login';
@@ -20,27 +16,6 @@ const Login = () => {
     const [passwordError, setPasswordError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [visible, setVisible] = useState(false);
-    // const [ user ] = useAuthState(googleAuth);
-
-    // if(user){
-    //     localStorage.setItem('access_token', "OK");
-    //     let valueUser = {
-    //         id: user.uid,
-    //         email: user.email,
-    //         firstName: user.displayName.split(' ')[0],
-    //         lastName: user.displayName.split(' ')[1],
-    //         role: 'ADMIN',
-    //         blocked: false,
-    //     }
-    //     console.log("user", valueUser);
-    //     setValue('user', valueUser);
-    //     window.location='/dashboard';
-    // }
-
-    // function signInWithGoogle(){
-    //     const provider = googleAuthProvider;
-    //     googleAuth.signInWithPopup(provider);
-    // }
 
     function handleChange(name, value){
         if (name === 'email'){
@@ -74,7 +49,6 @@ const Login = () => {
                 .then(res => { 
                     console.log(res.data);
                     console.log(res.data.status);
-                    console.log(res.data.data);
                     localStorage.setItem('access_token', res.data.status);
                     setValue('user', res.data.data);
                     window.location='/dashboard';
@@ -142,16 +116,14 @@ const Login = () => {
                     {visible ? <Visibility className='admin-eye-icon' onClick={togglePasswordVisiblity}/> : <VisibilityOff className='admin-eye-icon' onClick={togglePasswordVisiblity}/>}
                 </li>
             </ul>
-            <div className='submit-button-container'>
+            <ul className='submit-button-container'>
                 <button className='submit-button'
                     onClick={handleSubmit}>
                     Login!
                 </button>
-            </div>
+            </ul>
             <div>
-            {/* <Grid item>
-                <GoogleButton cursor="pointer" type="dark" onClick={signInWithGoogle}/>
-            </Grid> */}
+
             </div>
         </div>
     );

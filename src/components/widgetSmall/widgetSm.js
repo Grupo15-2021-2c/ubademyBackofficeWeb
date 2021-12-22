@@ -1,28 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './widgetSm.css';
 import jovenConfiado from '../../images/joven-confiado.jpg';
-import axios from 'axios';
-import {API_BASE_URL} from "../../constants/constants";
+import { fetchUserList } from "../../services";
 
-const url = API_BASE_URL + '/users';
 
 function WidgetSm() {
   const [userInfos, setUserInfos] = useState([]);
-  const [toggleRefreshList, setToggleRefreshList] = useState(false);
 
-
-  const fetchUserList = () => {
-    return axios.get(url)
-    .then(({data}) => {
-        //handle succes
-        setToggleRefreshList(toggleRefreshList);
-        return data.data;
-    })
-    .catch(err =>{
-        //handle error
-        console.error("error",err);
-    })
-  }
 
   useEffect(() => {
     fetchUserList().then((userData) => {
@@ -30,7 +14,7 @@ function WidgetSm() {
         console.log(userData)
         setUserInfos(userData);
     });
-  },[toggleRefreshList]);
+  },[]);
 
     return (
       <div className='widgetSm-container'>
