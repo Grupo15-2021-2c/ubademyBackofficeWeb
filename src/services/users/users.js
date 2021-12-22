@@ -1,15 +1,10 @@
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
-import { getValue } from '../index';
+import { getValidToken, removeValidToken } from '../token/token';
 
 
 const url = API_BASE_URL + '/users';
-const user = getValue('user');
-let varToken= '';
-if (user){
-    console.log("User Service", user);
-    varToken = user.token;
-}
+let varToken= getValidToken();
 
 export const fetchUserList = () => {
     return axios.get(url,{
@@ -21,10 +16,14 @@ export const fetchUserList = () => {
         //handle succes
         return data.data;
     })
-    .catch(err =>{
+    .catch(error =>{
         //handle error
-        console.error("error",err);
-    })
+        console.error("error: ",error.response.data.message);
+        if(error.response.data.message === 'JwtParseError: Jwt is expired'){
+            console.log('Removing data...');
+            removeValidToken();
+        }
+    });
 }
 
 export const handleBlockUser = (id, blocked) => {
@@ -36,19 +35,22 @@ export const handleBlockUser = (id, blocked) => {
         payload = url + "/" + id + "/unblock";
     }
     console.log(payload);
-    return axios.patch(payload,{
-        headers: {
-          Authorization: 'Bearer ' + varToken
-        }
-      })
-        .then(res => {
-            //handle succes
-            console.log(res);            
-            return res.data;
-        })
-        .catch(err =>{
-            //handle error
-            console.error("error",err);
-            return err;
-        })
+    return axios({
+        method: 'patch',
+        url: `${payload}`,
+    }, {
+      headers: {
+        Authorization: 'Bearer ' + varToken
+      }
+    })
+    .then(res => {
+        //handle succes
+        console.log(res);            
+        return res.data;
+    })
+    .catch(err =>{
+        //handle error
+        console.error("error",err);
+        return err;
+    })
 }

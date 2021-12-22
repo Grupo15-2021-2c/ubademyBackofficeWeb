@@ -6,6 +6,7 @@ import { fetchCategories, getCategorySelected, setCategorySelected } from './cat
 import { fetchResourcesList, setResourcesSelected, getResourcesSelected } from './resourses/resourses'
 import { getLoading, setLoading } from './loading/loading';
 import { fetchUserList, handleBlockUser } from './users/users';
+import { getValidToken, removeValidToken } from './token/token'
 
 export { 
     getValue, 
@@ -31,4 +32,6 @@ export {
     setLoading,
     fetchUserList,
     handleBlockUser,
+    getValidToken,
+    removeValidToken,
 }

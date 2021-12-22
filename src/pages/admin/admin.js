@@ -3,17 +3,12 @@ import './admin.css';
 import { Input, Title, Label, passwordRegex, validateEmail } from '../../components';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import logo from '../../images/ubademylogo.png';
-import { getValue } from '../../services/index';
+import { getValidToken } from '../../services/index';
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
 
 const url = API_BASE_URL + '/users/admins/register';
-const user = getValue('user');
-let varToken= '';
-if (user){
-    console.log("User Service", user);
-    varToken = user.token;
-}
+let varToken= getValidToken();
 
 function Admin() {
 

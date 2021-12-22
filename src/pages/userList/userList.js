@@ -4,13 +4,13 @@ import { Title, Modal, Label, Input, passwordRegex, validateEmail } from '../../
 import { DataGrid } from "@material-ui/data-grid";
 import { Visibility, BlockOutlined } from "@material-ui/icons";
 import { fetchUserList, handleBlockUser } from "../../services";
-import { getValue } from '../../services/index';
+import { getValidToken } from '../../services/index';
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
 
 const url = API_BASE_URL + '/users';
-let varToken= '';
-const userData = getValue('user');
+let varToken= getValidToken();
+
 
 function UserList() {
 
@@ -44,20 +44,20 @@ function UserList() {
             password: password,
         });
         console.log("user:", user);
-        if (userData){
-            varToken = user.token;
-        }
-        axios
-            .patch(url+ "/" + user.id, {firstName: `${firstName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`},{
-                headers: {
-                  Authorization: 'Bearer ' + varToken
-                }
-              })
-            .then(res => { 
-                console.log("res",res);
-                setToggleRefreshList(!toggleRefreshList);
-                handleClose();
-            });
+        axios({
+            method: 'put',
+            url: `${url+ "/" + user.id}`,
+            data: {firstName: `${firstName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`}
+        }, {
+          headers: {
+            Authorization: 'Bearer ' + varToken
+          }
+        })
+        .then(res => { 
+            console.log("res",res);
+            setToggleRefreshList(!toggleRefreshList);
+            handleClose();
+        });
     }
 
     const handleEdition = (params) => {
