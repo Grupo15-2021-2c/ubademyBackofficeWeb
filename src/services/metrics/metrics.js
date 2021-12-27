@@ -1,12 +1,12 @@
 import axios from 'axios';
-//import {API_BASE_URL} from "../../constants/constants";
+import {API_BASE_URL} from "../../constants/constants";
 import { getValidToken, removeValidToken } from '../token/token';
 
-const url = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/metrics/';
+const url = API_BASE_URL + '/metrics/';
 let varToken= getValidToken();
 
 export const fetchUsersMetrics = () => {
-  let payload = url + 'users/';
+  let payload = url + 'users';
   console.log(payload);
   return axios.get(payload,{
       headers: {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './home.css';
-import { Feature, Line_Chart, WidgetSm, WidgetLg } from '../../components';
-import { userData } from '../../dummyData';
+import { Feature, WidgetSm, WidgetLg } from '../../components';
 import { fetchUsersMetrics } from '../../services/index';
 
 function Home() {
@@ -21,7 +20,7 @@ function Home() {
             <Feature />
             <Feature />
         </div>
-        <Line_Chart data={userData} title='User Analytics' grid dataKey='Active User'/>
+        {/* <Line_Chart data={userData} title='User Analytics' grid dataKey='Active User'/> */}
         <div className='home-widgets'>
           <WidgetSm/>
           <WidgetLg />
@@ -32,3 +31,18 @@ function Home() {
   
   export default Home;
 
+
+ /* {
+    "status": "success",
+    "data": {
+      "blocked": "3",
+      "totalUsers": "num",
+      "loginMail": "num",
+      "loginGoogle": "num",
+      "totalLogin": "num",
+    }
+  }
+  
+  cantidad de usuarios bloqueados respecto del total
+  loginMail y loginGoogle respecto total login
+  */
