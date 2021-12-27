@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './course.css';
-import { getCourseSelected, fetchCourseById, fetchSections, fetchCategories, getInscriptionSelected, getLoading } from '../../services/index';
+import { getCourseSelected, fetchSections, fetchCategories, getInscriptionSelected, getLoading } from '../../services/index';
 import {  Modal, Label } from '../../components';
 import { Loading } from '../../components';
 import { Sections } from '../index';
@@ -13,7 +13,7 @@ function Course() {
   const [categoriesInfos, setCategoriesInfo] = useState([]);
   const [inscriptionSelected, setInscription ] = useState(getInscriptionSelected());
   const [show, setShow] = useState(false);
-  const [ courseInfos, setCourse ] = useState(getCourseSelected());
+  const [ courseInfos ] = useState(getCourseSelected());
   const [ loading, setLoading ] = useState(getLoading())
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -26,13 +26,13 @@ function Course() {
   const handleRefresh = () => {
     setInscription(getInscriptionSelected());
     setLoading(getLoading());
-}
+  }
 
   useEffect(() => {
 
     console.log(id[0]);
-    setCourse(fetchCourseById(id[0]));
-
+    //setCourse(fetchCourseById(id[0]));
+    console.log(courseInfos);
     fetchSections(courseInfos.id).then((sectionsData) => {
         setSectionsInfo(sectionsData);
     })

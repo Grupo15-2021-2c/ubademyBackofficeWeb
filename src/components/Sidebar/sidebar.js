@@ -46,11 +46,13 @@ function Sidebar() {
                                 </ListItem>
                             </NavLink>
                         </li>
-                        <li className='sidebar-list-item'>
-                            <ListItem button>
-                                <Timeline className='sidebar-icon'/>
-                                Análisis
-                            </ListItem>
+                        <li>
+                            <NavLink to="/dashboard/analytics" className='sidebar-list-item' activeClassName='active'>
+                                <ListItem button>
+                                    <Timeline className='sidebar-icon'/>
+                                    Análisis
+                                </ListItem>
+                            </NavLink>
                         </li>
                         <li className='sidebar-list-item'>
                             <ListItem button>

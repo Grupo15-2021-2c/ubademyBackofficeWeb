@@ -15,3 +15,9 @@
     -webkit-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 25px 4px rgba(0,0,0,0.75);
 }
+
+.feature-title {
+    text-decoration: solid;
+    align-self: center;
+    font-weight: bold;
+}

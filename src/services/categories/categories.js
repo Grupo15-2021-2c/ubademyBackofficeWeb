@@ -16,6 +16,7 @@ export const fetchCategories = (id) => {
       })
     .then(({data}) => {
         //handle success
+        console.log(data.data);
         return data.data;
     })
     .catch(error =>{

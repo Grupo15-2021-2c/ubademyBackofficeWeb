@@ -34,13 +34,10 @@ export const handleBlockUser = (id, blocked) => {
     }else{
         payload = url + "/" + id + "/unblock";
     }
-    console.log(payload);
-    return axios({
-        method: 'patch',
-        url: `${payload}`,
-    }, {
+    console.log('Bearer ' + varToken);
+    return axios.patch(payload, 700,{
       headers: {
-        Authorization: 'Bearer ' + varToken
+        Authorization: 'Bearer ' + varToken,
       }
     })
     .then(res => {
@@ -48,9 +45,9 @@ export const handleBlockUser = (id, blocked) => {
         console.log(res);            
         return res.data;
     })
-    .catch(err =>{
+    .catch(error =>{
         //handle error
-        console.error("error",err);
-        return err;
+        console.error("error",error.response.data.message);
+        return error;
     })
 }

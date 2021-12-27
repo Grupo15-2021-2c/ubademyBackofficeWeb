@@ -5,12 +5,13 @@ import { DataGrid } from "@material-ui/data-grid";
 import { Visibility, BlockOutlined } from "@material-ui/icons";
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Switch, Route,  Link } from 'react-router-dom';
-import { fetchCourseList, setCourseSelected, fetchInscriptionsList, setInscriptionSelected } from '../../services/index';
+import { fetchCourseList, setCourseSelected, fetchInscriptionsList, setInscriptionSelected, getValidToken } from '../../services/index';
 import axios from 'axios';
 import {API_BASE_URL} from "../../constants/constants";
 
 
 const url = API_BASE_URL + '/courses/';
+let varToken= getValidToken();
 
 function CoursesList() {
 
@@ -38,7 +39,11 @@ function CoursesList() {
   }
   console.log(payload);
   axios
-  .patch(payload)
+  .patch(payload, 700,{
+    headers: {
+      Authorization: 'Bearer ' + varToken,
+    }
+  })
       .then(res => { 
           console.log(res);
           setToggleRefreshList(!toggleRefreshList);

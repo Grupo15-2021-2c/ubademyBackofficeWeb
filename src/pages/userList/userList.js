@@ -44,11 +44,12 @@ function UserList() {
             password: password,
         });
         console.log("user:", user);
-        axios({
-            method: 'put',
-            url: `${url+ "/" + user.id}`,
-            data: {firstName: `${firstName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`}
-        }, {
+        axios.put(
+            url + "/" + user.id,
+        {
+            firstName: `${firstName}`, lastName: `${lastName}`, email: `${email}`, password: `${password}`
+        },
+        {
           headers: {
             Authorization: 'Bearer ' + varToken
           }
@@ -91,21 +92,6 @@ function UserList() {
             setToggleRefreshList(!toggleRefreshList);
             handleCloseBlock();
         });
-        /*let payload = '';
-        console.log(blocked);
-        if (!blocked){
-            payload = url + "/" + id + "/block";
-        }else{
-            payload = url + "/" + id + "/unblock";
-        }
-        console.log(payload);
-        axios
-        .patch(payload)
-            .then(res => { 
-                console.log(res);
-                setToggleRefreshList(!toggleRefreshList);
-                handleCloseBlock();
-            })*/
     }
 
     const handleVisualization = (params) => {

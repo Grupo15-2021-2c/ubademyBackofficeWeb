@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sidebar, Topbar } from '../../components';
-import { Home, Admin, UserList, CoursesList, Course, Resources } from '../../pages';
+import { Home, Admin, UserList, CoursesList, Course, Resources, Metrics } from '../../pages';
 import './dashboard.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { fetchCourseList } from '../../services/index';
@@ -39,6 +39,9 @@ function Dashboard() {
               </Route>
               <Route exact path="/dashboard/courses" component={CoursesList}>
                 <CoursesList/>
+              </Route>
+              <Route exact path="/dashboard/analytics" component={Metrics}>
+                <Metrics/>
               </Route>
               {coursesInfos.map((course) => (
                 <Switch key={course.id}>

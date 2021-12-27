@@ -20,7 +20,7 @@ function Routes() {
                     <PrivateRoute exact path='/dashboard/users' component={Dashboard}/>
                     <PrivateRoute exact path='/dashboard/admin' component={Dashboard}/>
                     <PrivateRoute exact path='/dashboard/courses' component={Dashboard}/>
-
+                    <PrivateRoute exact path='/dashboard/analytics' component={Dashboard}/>
                 </div>
             </div>
         </Router>
