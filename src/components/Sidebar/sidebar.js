@@ -1,6 +1,6 @@
 import React from "react";
 import './sidebar.css';
-import { LineStyle, Timeline, TrendingUp, SupervisorAccountOutlined, PeopleAltOutlined } from '@material-ui/icons';
+import { LineStyle, TrendingUp, SupervisorAccountOutlined, PeopleAltOutlined, BarChart, PieChart } from '@material-ui/icons';
 import { ListItem } from '@material-ui/core';
 import { NavLink } from "react-router-dom";
 
@@ -49,16 +49,18 @@ function Sidebar() {
                         <li>
                             <NavLink to="/dashboard/analytics" className='sidebar-list-item' activeClassName='active'>
                                 <ListItem button>
-                                    <Timeline className='sidebar-icon'/>
+                                    <BarChart className='sidebar-icon'/>
                                     Análisis
                                 </ListItem>
                             </NavLink>
                         </li>
-                        <li className='sidebar-list-item'>
-                            <ListItem button>
-                                <TrendingUp className='sidebar-icon'/>
-                                Curso
-                            </ListItem>
+                        <li>
+                            <NavLink exact to="/dashboard/courses-analytics" className='sidebar-list-item' activeClassName='active'>
+                                <ListItem button>
+                                    <PieChart className='sidebar-icon'/>
+                                    Análisis de Cursos
+                                </ListItem>
+                            </NavLink>
                         </li>
                     </div>
                 </div>

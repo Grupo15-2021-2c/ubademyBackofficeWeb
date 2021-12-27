@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './metrics.css';
-import { fetchCoursesMetrics, fetchCourseList } from '../../services/index';
-import { Loading } from '../../components';
-
+import { fetchCourseMetrics, fetchCourseList } from '../../services/index';
+import { Loading, Bar_Chart } from '../../components';
 
 function Metrics() {
 
@@ -17,9 +16,15 @@ function Metrics() {
     useEffect(() => {
         fetchCourseList().then((courses) => {
             courses.map((course) => {
-                fetchCoursesMetrics(course.id).then((metricsData) => {
+                fetchCourseMetrics(course.id).then((metricsData) => {
+                    var temp = {
+                        name: course.title,
+                        examsTaken: metricsData.examsTaken,
+                        inscriptions: metricsData.inscriptions
+                    }
                     coursesInfo.push(course);
-                    coursesMetrics.push(metricsData);
+                    coursesMetrics.push(temp);
+                    console.log(temp);
                 }); 
             });
             console.log(coursesMetrics);
@@ -43,20 +48,8 @@ function Metrics() {
 
     return (
       <div className='metrics'>
-          <div className='metrics-features'>
-              {coursesMetrics.map((courseMetric) => (
-                <>
-                    <div className='metrics-info'>
-                    <div>
-                        {"Inscripted: " + JSON.stringify(courseMetric.inscriptions)}                    
-                    </div>
-                    <div>
-                        {"Exams Taken: " + JSON.stringify(courseMetric.examsTaken)}
-                    </div>
-                    </div>
-                </>
-                  ))}
-          </div>
+            <Bar_Chart data={coursesMetrics} title='Courses Inscriptions' grid dataKey='inscriptions'/>
+            <Bar_Chart data={coursesMetrics} title='Courses Exams' grid dataKey='examsTaken'/>
       </div>
     );
   }

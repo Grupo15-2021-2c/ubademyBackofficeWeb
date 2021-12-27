@@ -6,5 +6,6 @@ import Course from "./course/course";
 import Sections from "./sections/sections";
 import Resources from "./resources/resources"
 import Metrics from "./metrics/metrics";
+import CoursesMetrics from "./metrics/coursesMetrics";
 
-export { Home, Admin, UserList, CoursesList, Course, Sections, Resources, Metrics }
+export { Home, Admin, UserList, CoursesList, Course, Sections, Resources, Metrics, CoursesMetrics }

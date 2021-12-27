@@ -7,7 +7,7 @@ import { fetchResourcesList, setResourcesSelected, getResourcesSelected } from '
 import { getLoading, setLoading } from './loading/loading';
 import { fetchUserList, handleBlockUser } from './users/users';
 import { getValidToken, removeValidToken } from './token/token'
-import { fetchUsersMetrics, fetchCoursesMetrics } from './metrics/metrics';
+import { fetchUsersMetrics, fetchCoursesMetrics, fetchCourseMetrics } from './metrics/metrics';
 
 export { 
     getValue, 
@@ -36,5 +36,6 @@ export {
     getValidToken,
     removeValidToken,
     fetchUsersMetrics,
+    fetchCourseMetrics,
     fetchCoursesMetrics,
 }

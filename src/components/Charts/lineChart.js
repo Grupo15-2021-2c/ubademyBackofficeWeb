@@ -1,12 +1,12 @@
 import React from "react";
 import './chart.css';
 import PropTypes from 'prop-types';
-import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
-function Chart({title, data, dataKey, grid}) {
+function Line_Chart({title, data, dataKey, grid}) {
 
-    Chart.propTypes = {
+    Line_Chart.propTypes = {
       title: PropTypes.node.isRequired,
       data: PropTypes.node.isRequired,
       dataKey: PropTypes.node.isRequired,
@@ -20,7 +20,9 @@ function Chart({title, data, dataKey, grid}) {
             <LineChart data={data}>
                 <XAxis dataKey='name' stroke='#5550bd'/>
                 <Line type='monotone' dataKey={dataKey} stroke='#5550bd'/>
+                <YAxis />
                 <Tooltip />
+                <Legend />
                 {grid && <CartesianGrid stroke='#e0dfdf' strokeDasharray='5 5'/>}
             </LineChart>
         </ResponsiveContainer>
@@ -28,4 +30,4 @@ function Chart({title, data, dataKey, grid}) {
     );
   }
   
-  export default Chart;
+  export default Line_Chart;

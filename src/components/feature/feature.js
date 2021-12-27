@@ -16,7 +16,7 @@ function Feature({title, analytics}) {
               {title}
             </div>
             <div className='feature-list'>
-              {JSON.stringify(analytics)}
+              {analytics ? 'Blocked: ' + JSON.stringify(analytics.blocked) : ''}
             </div>
           </div>
       </div>

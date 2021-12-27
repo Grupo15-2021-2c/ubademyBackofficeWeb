@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './home.css';
-import { Feature, Chart, WidgetSm, WidgetLg } from '../../components';
+import { Feature, Line_Chart, WidgetSm, WidgetLg } from '../../components';
 import { userData } from '../../dummyData';
 import { fetchUsersMetrics } from '../../services/index';
 
@@ -21,7 +21,7 @@ function Home() {
             <Feature />
             <Feature />
         </div>
-        <Chart data={userData} title='User Analytics' grid dataKey='Active User'/>
+        <Line_Chart data={userData} title='User Analytics' grid dataKey='Active User'/>
         <div className='home-widgets'>
           <WidgetSm/>
           <WidgetLg />
