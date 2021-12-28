@@ -23,7 +23,7 @@ This is the first page that you will see if this is your first time using the ap
 If you do have an account you can Sign In by putting your email and password.
 
 <p align="center">
-   <img src="src/images/signIn.PNG" alt="drawing" style="width: 500px"/>
+   <img src="src/images/signIn.PNG" style="width: 100%"/>
 </p>
 
 # <a name="DashBoardScreen">DashBoard Screen</a>
@@ -92,7 +92,7 @@ Once you've press the **Eye** button you can visualize properties of a particula
 
 
 <p align="center">
-<img src="src/images/modalScreen.png" alt="drawing" style="width: 500px"/>
+<img src="src/images/modalScreen.PNG" alt="drawing" style="width: 500px"/>
 </p>
 
 Also you can visualize **Sections** of that same course. By pressing on one of the sections, it will redirect you to another page to see all the content of that particular section.
@@ -110,7 +110,7 @@ Also you can visualize **Sections** of that same course. By pressing on one of t
 This screen is where you as an **Admin** can create another **Admin**. Just complete the fields required with valid info and voilà, you just created an **Admin**
 
 <p align="center">
-<img src="src/images/adminScreen.png" alt="drawing" style="width: 500px"/>
+<img src="src/images/adminScreen.PNG" alt="drawing" style="width: 500px"/>
 </p>
 
 ## <a name="AnalyticsScreen">Analytics Screen</a>
