@@ -126,4 +126,33 @@ This screen is where you as an **Admin** can create another **Admin**. Just comp
 
 # <a name="CoursesAnalyticsScreen">Courses Analytics Screen</a>
 
+In this section you can see *Courses Analytics*. There are two **Bar Charts** that will show you:
+1. Inscriptions: Number of registrants per course.
+2. Exams Taken: Number of exams taken per course.
+
+<p align="center">
+<img src="src/images/coursesAnalitycsScreen1.PNG" style="width: 100%"/>
+</p>
+
+<p align="center">
+<img src="src/images/coursesAnalitycsScreen2.PNG" style="width: 100%"/>
+</p>
+
 # <a name="CourseAnalyticsScreen">Course Analytics Screen</a>
+
+On the other hand, in here you can visualize three **Pie Charts**.
+1. Categories: Number of courses by Category
+2. Owners: Number of courses by Owner
+3. Subscription: Number of courses by type of Subscription (FREE/PREMIUM)
+
+<p align="center">
+<img src="src/images/courseAnalitycsScreen1.PNG" style="width: 100%"/>
+</p>
+
+<p align="center">
+<img src="src/images/courseAnalitycsScreen2.PNG" style="width: 100%"/>
+</p>
+
+<p align="center">
+<img src="src/images/courseAnalitycsScreen3.PNG" style="width: 100%"/>
+</p>
