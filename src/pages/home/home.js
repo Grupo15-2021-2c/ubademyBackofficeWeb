@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './home.css';
-import { Feature, WidgetSm, WidgetLg } from '../../components';
+import { WidgetSm, WidgetLg, Pie_Chart } from '../../components';
 import { fetchUsersMetrics } from '../../services/index';
 
 function Home() {
@@ -10,17 +10,40 @@ function Home() {
   useEffect(() => {
     fetchUsersMetrics().then((metricsData) => {
         setUsersMetrics(metricsData);
+        console.log(usersMetrics);
     });
   },[]);
 
+  const data = [
+    {
+      name: 'blocked',
+      value: 3,
+    },
+    {
+      name: 'Total Users',
+      value: 20,
+    }
+  ]
+
+  const data2 = [
+    {
+      name: 'login Mail',
+      value: 13,
+    },
+    {
+      name: 'login Google',
+      value: 7,
+    },
+    {
+      name: 'total Login',
+      value: 20,
+    }
+  ]
+
   return (
     <div className='home'>
-        <div className='home-features'>
-            <Feature title={'Users'} analytics={usersMetrics}/>
-            <Feature />
-            <Feature />
-        </div>
-        {/* <Line_Chart data={userData} title='User Analytics' grid dataKey='Active User'/> */}
+        <Pie_Chart data={data} title='Blocked Users' dataKey='value'/>
+        <Pie_Chart data={data2} title='Login Analytics' dataKey='value'/>
         <div className='home-widgets'>
           <WidgetSm/>
           <WidgetLg />

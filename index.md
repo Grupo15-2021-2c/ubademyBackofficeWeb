@@ -18,7 +18,7 @@
 
 ## <a name="SignIn">Sign In</a>
 
-This is the first page that you will see if this is your first time using the app. In case you don't have an account it means that you are not an administrator so you do not have permissions to enter this web.
+This is the first page that you will see if this is your first time using the Backoffice Web. In case you don't have an account it means that you are not an administrator so you do not have permissions to enter this web.
 
 If you do have an account you can Sign In by putting your email and password.
 
@@ -53,7 +53,15 @@ This is the home screen. From here you can see some User Metrics.
 3. Users: Public users and status
 
 <p align="center">
-<img src="src/images/homeScreen.PNG" style="width: 100%"/>
+<img src="src/images/pieChart1.png" style="width: 100%"/>
+</p>
+
+<p align="center">
+<img src="src/images/pieChart2.png" style="width: 100%"/>
+</p>
+
+<p align="center">
+<img src="src/images/homeScreen.png" style="width: 100%"/>
 </p>
 
 ## <a name="UserScreen">Users Screen</a>
