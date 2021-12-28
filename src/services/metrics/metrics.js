@@ -6,7 +6,8 @@ const url = API_BASE_URL + '/metrics/';
 let varToken= getValidToken();
 
 export const fetchUsersMetrics = () => {
-  let payload = url + 'users';
+  //let payload = url + 'users';
+  let payload = 'https://ubademy-g15-back-node-stage.herokuapp.com/api/metrics/users'
   console.log(payload);
   return axios.get(payload,{
       headers: {
