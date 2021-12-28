@@ -36,12 +36,6 @@ function Home() {
           value: parseInt(metricsData.loginGoogle),
           }
         loginMetrics.push(data);
-        data =  
-        {
-          name: 'total Login',
-          value: parseInt(metricsData.totalLogin),
-        }
-      loginMetrics.push(data);
       console.log(blockedMetrics);
       console.log(loginMetrics);
     });
