@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import './home.css';
-import { WidgetSm, WidgetLg, Pie_Chart } from '../../components';
+import { WidgetSm, WidgetLg, Pie_Chart, Loading } from '../../components';
 import { fetchUsersMetrics } from '../../services/index';
 
 function Home() {
 
   const [ blockedMetrics ] = useState([]);
   const [ loginMetrics ] = useState([]);
+  const [ loading, setLoading ] = useState(true);
+
+  const handleRefresh = () => {
+      setLoading(false);
+  }
 
   useEffect(() => {
     fetchUsersMetrics().then((metricsData) => {
@@ -41,6 +46,20 @@ function Home() {
       console.log(loginMetrics);
     });
   },[]);
+
+  setTimeout(() => {
+    handleRefresh();
+}, 2000);
+
+if(loading){
+    return(
+        <div className='resources'>
+            <div className='resources-container'>
+                <Loading/>
+            </div>
+        </div>
+    );
+}
  
 
   return (
