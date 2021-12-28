@@ -89,6 +89,7 @@ Once you've press the **Eye** button you can visualize properties of a particula
 
 <p align="center">
 <img src="src/images/inscriptionsScreen.png" style="width: 100%"/>
+</p>
 
 
 <p align="center">
