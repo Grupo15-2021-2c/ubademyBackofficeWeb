@@ -99,7 +99,7 @@ function Admin() {
   return (
     <div className='admin'>
       <div className='admin-container'>
-        <ui className='admin-list'>
+        <ul className='admin-list'>
           <img src={logo} className="App-logo" alt="logo" />
           <li style={{listStyleType: 'none'}}>
             <Title text='Añadir nuevo Administrador!' />
@@ -113,7 +113,9 @@ function Admin() {
                 type: 'text',
                 placeholder: 'Ingrese su Nombre'
             }}
-            handleChange={handleChange} />
+            handleChange={handleChange}
+            param={false}
+            />
             </div>
           </li>
           <li className='admin-list-item'>
@@ -125,7 +127,9 @@ function Admin() {
                 type: 'text',
                 placeholder: 'Ingrese su Apellido'
             }}
-            handleChange={handleChange} />
+            handleChange={handleChange}
+            param={false}
+            />
             </div>
           </li>
           <li className='admin-list-item'>
@@ -162,7 +166,7 @@ function Admin() {
                   Añadir!
               </button>
           </li>
-        </ui>
+        </ul>
       </div>
     </div>
     );

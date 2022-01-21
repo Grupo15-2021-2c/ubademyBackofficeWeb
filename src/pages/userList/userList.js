@@ -184,7 +184,7 @@ function UserList() {
     <>
       <div className='users'>
           <div className='users-container'>
-            <ui className='users-list'>
+            <ul className='users-list'>
                 <li style={{listStyleType: 'none'}}>
                     <Title text='Listado de Usuarios' />
                     <div style={{ height: 600, width: '100%' }}>
@@ -198,10 +198,10 @@ function UserList() {
                     />
                     </div>
                 </li>
-            </ui>
+            </ul>
             <Modal title={user} visibility={show} editing={show} onClose={handleClose} onSave={handleSave}>
                 <div className='modal-body'>
-                    <u1 className='modal-list'>
+                    <ul className='modal-list'>
                         <li className='modal-list-item'>
                             <Label text='First Name'/>
                             <div className='modal-input-container' >
@@ -258,7 +258,7 @@ function UserList() {
                             <Visibility className='modal-eye-icon' onClick={togglePasswordVisiblity}/>
                             </div>
                         </li>
-                    </u1>                    
+                    </ul>                    
                 </div>
                 <div className='modal-footer'>
                     <button onClick={() => handleClose()} 
@@ -273,7 +273,7 @@ function UserList() {
             </Modal>
             <Modal title={user} visibility={showVisualization} editing={show} onClose={handleCloseVisualitazion}>
                 <div className='modal-body'>
-                    <u1 className='modal-list'>
+                    <ul className='modal-list'>
                         <li className='modal-list-item'>
                             <Label text='User id'/>
                             <div className='modal-visualizing-container' >
@@ -316,7 +316,7 @@ function UserList() {
                                 {user.blocked ? <>Blocked</> : <>Not Blocked</>}
                             </div>
                         </li>
-                    </u1>                    
+                    </ul>                    
                 </div>
                 <button onClick={() => handleCloseVisualitazion()} 
                 data-disabled='modal' className='modal-button-exit'>
@@ -325,11 +325,11 @@ function UserList() {
             </Modal>
             <Modal title={user} visibility={showDeletion} editing={show} onClose={handleCloseBlock}>
                 <div className='modal-body'>
-                    <u1 className='modal-list'>
+                    <ul className='modal-list'>
                         <li className='modal-list-item'>
                             <Label text={'¿Está seguro que desea bloquear/desbloquear al usuario: ' + user.firstName + ' ' + user.lastName + '?'}/>
                         </li>
-                    </u1>
+                    </ul>
                 </div>
                 <div className='modal-footer'>
                     <button onClick={() => handleCloseBlock()} 

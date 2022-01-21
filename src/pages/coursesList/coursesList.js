@@ -70,7 +70,7 @@ function CoursesList() {
         renderCell: (params) => {
             return (
                 <>
-                <Link exact to={"/dashboard/course/"+ params.row.id}  activeClassName='active'>
+                <Link to={"/dashboard/course/" + params.row.id.toString()}  activeclassname='active'>
                     <Visibility className='courses-visualize' onClick={() => handleVisualization(params)}/>
                 </Link>
                 <BlockOutlined className='courses-delete' onClick={() => handleConfirmBlock(params.row)}/>
@@ -91,7 +91,7 @@ function CoursesList() {
   return (
       <div className='courses'>
         <div className='courses-container'>
-          <ui className='courses-list'>
+          <ul className='courses-list'>
             <li style={{ listStyleType: 'none' }}>
               <Title text='Listado de Cursos' />
               <div style={{ height: 600, width: '100%' }}>
@@ -104,15 +104,15 @@ function CoursesList() {
                   checkboxSelection />
               </div>
             </li>
-          </ui>
+          </ul>
         </div> 
         <Modal title={selectedCourse} visibility={showDeletion} editing={false} onClose={handleCloseBlock}>
           <div className='modal-body'>
-              <u1 className='modal-list'>
+              <ul className='modal-list'>
                   <li className='modal-list-item'>
                     <Label text={'¿Está seguro que desea bloquear/desbloquear el curso: ' + selectedCourse.title + '?'}/>
                   </li>
-              </u1>
+              </ul>
           </div>
           <div className='modal-footer'>
               <button onClick={() => handleCloseBlock()} 
